@@ -238,10 +238,15 @@ devlet-arsivleri-soykutugu/
 │   └── gocmen-ve-mubadil-rehberi.md                 # Balkanlar, Adalar, Girit ve Kafkasya göçmen/mübadil kılavuzu
 ├── scripts/
 │   ├── dab_helpers.js                               # Chrome DevTools MCP sıralı/WAF korumalı arama ve varak yardımcıları
-│   └── crop_and_verify.py                           # .zip/.jpg defterlerden varak bölme ve 1:1 piksel kesit alma aracı
+│   ├── crop_and_verify.py                           # .zip/.jpg defterlerden varak bölme ve 1:1 piksel kesit alma aracı
+│   └── tarih_cevirici.py                            # 3 yönlü Hicrî ↔ Rûmî ↔ Milâdî kesin tarih çevirici (TTK bağlantılı)
 └── examples/
     └── ornek-kullanim-promptlari.md                 # 4 farklı senaryo için hazır kopyala-yapıştır istem şablonları
 ```
+
+### Kardeş Proje (Osmanlıca Resmî Evraklar İçin)
+
+Ferman, Berat, İrade-i Seniyye, Tahrirat, Mazbata, Arz-ı Hâl, Hüccet ve Telgrafname gibi resmî belgeleri üniversitelerde geçerli **TDV İA / TTK transkripsiyon sistemi**, şerh (kritik aparat), kelime/tamlama çözümlemeli interaktif HTML ve Kubbealtı/TDV İslâm Ansiklopedisi atıflarıyla okumak için kardeş beceriye göz atın: **[`shnfatih-hash/osmanlica-resmi-evrak`](https://github.com/shnfatih-hash/osmanlica-resmi-evrak)**
 
 ### Teşekkür ve İlham Kaynağı
 

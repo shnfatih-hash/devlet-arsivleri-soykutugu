@@ -114,3 +114,6 @@ Katalog aramalarında Arap alfabesindeki çok sesli harflerden kaynaklanan şu d
 ### C. Nüfus Defterlerinde Sık Geçen Fiziksel Eşkâl Sıfatları
 - **Boy:** `orta boylu` (`اورته بويلو`), `uzun boylu` (`اوزون بويلو`), `kısa boylu` (`قصه بويلو`).
 - **Sakal ve Bıyık:** `kara sakallı` (`قره صقاللى`), `kır sakallı` (`قير صقاللى`), `ak sakallı` (`اق صقاللى`), `sarı / kumral / konur sakallı` (`صارى / قومرال / قونر صقاللى`), `köse sakallı` (`كوسه صقاللى` — seyrek sakallı), `ter bıyıklı` (`تر بيقلى` — bıyığı yeni çıkmış), `kara bıyıklı` (`قره بيقلى`).
+
+### D. Tarih ve Ay Çiftleri Kontrol Kuralı (`tarih_cevirici.py`)
+- Rik'a hattında `كانون اول` (*Kânûn-ı Evvel*) ile `كانون ثانى` (*Kânûn-ı S̱ânî*) ve `تشرين اول` ile `تشرين ثانى` çok benzer istiflenir. Aynı defterde veya şerhte birden fazla tarih geçtiğinde önceki ay adını ezbere tekrarlamayın; `ث` üç nokta şapkası (`^`) olup olmadığını 1:1 kesitle doğrulayıp kesin Milâdî karşılığını `scripts/tarih_cevirici.py` ile hesaplayın.
