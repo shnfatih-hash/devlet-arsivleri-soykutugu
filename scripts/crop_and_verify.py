@@ -14,6 +14,8 @@ uzantılı Osmanlıca defter görüntülerini:
 Gereksinim: Python 3.8+ ve Pillow (`pip install Pillow`)
 """
 
+from __future__ import annotations
+
 import argparse
 import os
 import sys
@@ -26,6 +28,10 @@ except ImportError:
     sys.exit("Hata: 'Pillow' kütüphanesi kurulu değil. Kurmak için: pip install Pillow")
 
 IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".tif", ".tiff", ".webp"}
+
+# Zip bombası koruması: tek bir arşivden çıkarılacak en fazla toplam boyut ve dosya sayısı
+MAX_ZIP_UNCOMPRESSED_BYTES = 4 * 1024 ** 3  # 4 GB
+MAX_ZIP_MEMBERS = 5000
 
 
 def extract_zips_if_needed(input_dir: Path, extract_root: Path) -> list[Path]:
@@ -40,10 +46,17 @@ def extract_zips_if_needed(input_dir: Path, extract_root: Path) -> list[Path]:
                 if not target.exists():
                     target.mkdir(parents=True, exist_ok=True)
                     with zipfile.ZipFile(fpath, "r") as zf:
-                        for member in zf.infolist():
-                            # Zip-slip güvenlik kontrolü
+                        members = zf.infolist()
+                        total_size = sum(m.file_size for m in members)
+                        if len(members) > MAX_ZIP_MEMBERS or total_size > MAX_ZIP_UNCOMPRESSED_BYTES:
+                            raise ValueError(
+                                f"Arşiv çok büyük ({len(members)} dosya, {total_size} bayt): {fpath.name}"
+                            )
+                        base = target.resolve()
+                        for member in members:
+                            # Zip-slip güvenlik kontrolü (dizin sınırı ayırıcıyla birlikte karşılaştırılır)
                             dest = (target / member.filename).resolve()
-                            if not str(dest).startswith(str(target.resolve())):
+                            if os.path.commonpath([str(base), str(dest)]) != str(base):
                                 raise ValueError(f"Güvensiz zip yolu reddedildi: {member.filename}")
                             zf.extract(member, target)
                 for zroot, _, zfiles in os.walk(target):
