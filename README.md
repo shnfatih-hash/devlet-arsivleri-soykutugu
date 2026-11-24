@@ -252,6 +252,12 @@ Ferman, Berat, İrade-i Seniyye, Tahrirat, Mazbata, Arz-ı Hâl, Hüccet ve Telg
 
 Bu beceri paketi ve araştırma metodolojisi, **Said Sürücü**'nün seminerinden hareketle hazırlanmış ve geliştirilmiştir. Yapay zekâ destekli arşiv ve soy kütüğü araştırmalarına ilham veren kıymetli paylaşımı ve rehberliği için **Said Sürücü**'ye gönülden teşekkür ederiz.
 
+### ♥ Projeye Gönüllü Destek
+
+Bu proje tamamen ücretsiz ve açık kaynaklıdır; herkesin özgürce kullanımına açık kalacaktır. Çalışmayı faydalı bulduysanız ve yeni Osmanlı arşivi / dijital beşerî bilimler AI Skill'lerinin geliştirilmesine gönüllü olarak katkıda bulunmak isterseniz GitHub Sponsors üzerinden destek olabilirsiniz:
+
+[![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-Projeye%20Destek%20Ol-ea4aaa?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/shnfatih-hash)
+
 ### Lisans
 
 Bu proje **MIT Lisansı** ile herkesin özgürce kullanımına, geliştirmesine ve paylaşımına sunulmuştur.
