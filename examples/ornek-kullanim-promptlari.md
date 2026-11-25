@@ -4,24 +4,26 @@ Bu dosyadaki hazır istemleri (promptları), araştırma aşamanıza göre doğr
 
 ---
 
-## 1. Ana Başlangıç İstemi: e-Devlet Belgesi + Canlı Chrome DevTools MCP Taraması
+## 1. Ana Başlangıç İstemi: e-Devlet / Nüfus Müdürlüğü Belgesi + Canlı Chrome DevTools MCP Taraması
 
-*Kullanım zamanı: e-Devlet'ten Alt-Üst Soy PDF belgenizi indirdiğinizde ve Chrome'da `katalog.devletarsivleri.gov.tr` oturumunuzu açtığınızda.*
+*Kullanım zamanı: Bilgisayarınızda özel bir proje klasörü (ör. `Soy_Kutugu_Arastirmam`) oluşturup Antigravity'de açtığınızda, e-Devlet Alt-Üst Soy PDF belgenizi bu klasöre koyduğunuzda ve **normal Google Chrome**'da `katalog.devletarsivleri.gov.tr` oturumunuzu açtığınızda.*
 
 ```markdown
-Sana e-Devlet'ten aldığım "Alt-Üst Soy Bilgisi" belgemi yükledim. Chrome tarayıcımda `chrome://inspect/#remote-debugging` ayarını etkinleştirdim ve `https://katalog.devletarsivleri.gov.tr` adresine kendi e-Devlet şifremle giriş yaptım. (Bilinen aile lakaplarımız / ek bilgilerimiz: [...varsa buraya yazın...])
+Sana e-Devlet'ten aldığım "Alt-Üst Soy Bilgisi" belgemi (veya Nüfus Müdürlüğü kayıt örneğimi) bu proje klasörünün içine koydum. Bilgisayarımdaki normal Google Chrome tarayıcımda `chrome://inspect/#remote-debugging` ayarını etkinleştirdim ve `https://katalog.devletarsivleri.gov.tr` adresine kendi e-Devlet şifremle giriş yaptım. (Bilinen aile lakaplarımız / ek bilgilerimiz: [...varsa buraya yazın...])
 
-Lütfen `devlet-arsivleri-soykutugu` becerisini kullanarak açık olan Devlet Arşivleri Kataloğu sekmeme bağlan ve şu adımları uygula:
+ÖNEMLİ KURAL: Antigravity'nin kendi dahili/yerleşik tarayıcısını ASLA açma ("Web Sayfasına Erişim Engellendi" hatası verir); doğrudan `chrome-devtools` MCP üzerinden açık olan normal Google Chrome sekmeme bağlanarak ilerle. İhtiyaç duyduğun yardımcı betikleri kullan ve ürettiğin tüm 1:1 belge kesitleri ile raporları bu proje klasörünün içine düzenli alt klasörler halinde kaydet.
+
+Lütfen `devlet-arsivleri-soykutugu` becerisini kullanarak şu adımları uygula:
 
 1. **4 Temel İpucu ve Kütük Duvarı Analizi:**
-   - Baba ve anne tarafımdaki en eski atalarımı, baba/anne adlarını, doğum yıllarını (Milâdî → Hicrî/Rûmî karşılıklarıyla), Cilt–Hane–Sıra numaralarını ve köylerimizin Cumhuriyet öncesi **eski Osmanlıca adlarını** ve bağlı oldukları **eyalet / sancak / kaza / nahiye** zincirini (komşu kaza/nahiye geçiş ihtimalleriyle birlikte) çıkar.
+   - Baba ve anne tarafımdaki en eski atalarımı, baba/anne adlarını, doğum yıllarını (`tarih_cevirici.py` ile Milâdî → Hicrî/Rûmî karşılıklarıyla), Cilt–Hane–Sıra numaralarını, sülale lakaplarımızı ve köylerimizin Cumhuriyet öncesi **eski Osmanlıca adlarını** ve bağlı oldukları **eyalet / sancak / kaza / nahiye** zincirini (komşu kaza/nahiye geçiş ihtimalleriyle birlikte) çıkar.
 
 2. **Bütçe Koruyan "Önce Fihrist" Katalog Taraması (1830–1500):**
-   - Katalogda `NFS.d` (1830–1880 Nüfus), `ML.VRD.TMT.d` (1844–1845 Temettuat), `A.{RSK.d` (1835–1838 İmam-Muhtar), `MŞH.ŞSC.d` (Şer'iyye Sicilleri), `MAD.d` (Avârız/Mukataa) ve `TT.d / TK.GM.d` (15.–16. yy. Tapu Tahrir) fonlarında köyümü ve bağlı olduğu kaza/nahiye toplu defterlerini ara.
+   - Katalogda `NFS.d` (1830–1880 Nüfus), `ML.VRD.TMT.d` (1844–1845 Temettuat), `A.{RSK.d` (1835–1838 İmam-Muhtar), `MŞH.ŞSC.d` (Şer'iyye Sicilleri / Tereke), `MAD.d` & `D..BŞM.CZY.d` (Avârız ve varsa Cizye defterleri) ile `TT.d / TK.GM.d` (15.–16. yy. Tapu Tahrir ve bölgesel cemaat/göç kayıtları) fonlarında köyümü ve bağlı olduğu kaza/nahiye toplu defterlerini ara.
    - Güvenlik duvarını (`HTTP 418`) tetiklememek için paralel istek atmadan, önce defterlerin **Fihrist (`Mi=1..5`)** sayfalarını kontrol et; yanlış dönem veya farklı nahiyeye ait defterleri ele; doğru defterlerde **Poz (`Mi`) ≠ Varak (`vr.`)** farkını hesaplayarak köyümün tam hangi poz aralığında başladığını tespit et.
 
-3. **Kanıtlı Eşleştirme ve Nokta Atışı İndirme Listesi:**
-   - Önizlemeden okunabilen kayıtları kuşak matematiğiyle (`+ΔYıl` yaş farkı ve `1/N` hane filtresi) analiz et; her bulguyu `[KESİN KANIT]`, `[GÜÇLÜ EŞLEŞME]` veya `[İSİM İZİ]` olarak etiketle, okunamayan yerleri asla tahminle doldurma.
+3. **Kanıtlı Eşleştirme, Bölgesel Göç Bağlamı ve Nokta Atışı İndirme Listesi:**
+   - Önizlemeden okunabilen kayıtları kuşak matematiğiyle (`+ΔYıl` yaş farkı ve `1/N` hane filtresi) analiz et; 15.–16. yy. tahrir katmanında bölgemize yapılan göç/iskân hareketlerini ve belgelerde geçen cemaat/boy kayıtlarını da tarihsel bağlamıyla incele. Her bulguyu `[KESİN KANIT]`, `[GÜÇLÜ EŞLEŞME]`, `[İSİM İZİ]` veya `[BÖLGESEL GÖÇ & CEMAAT BAĞLAMI]` olarak etiketle, okunamayan yerleri asla tahminle doldurma.
    - e-Satış sepetinden gereksiz tüm defteri değil, **sadece doğru sayfa aralıklarını** indirebilmem için tam `Fon Kodu | Defter No | Tarih | Varak No | Dijital Poz (Mi) Aralığı | İçerik` tablosunu ver.
 ```
 
@@ -67,4 +69,18 @@ Elde ettiğimiz tüm birincil arşiv belgelerini, filigransız hane kayıtların
 Yazım kuralları:
 - Tüm yer, kurucu sülale, şahıs ve kurum adlarının belgede geçen özgün Osmanlıca yazılışlarını parantez içinde göster; her olayı ve rakamı tam arşiv künyesine (`Fon, Defter/Dosya, Varak/Poz, Hicrî/Milâdî Tarih`) bağla.
 - Köyün coğrafyasını, isim kökenini, 16.–19. yüzyıl idari/vergi evrimini, kurucu ocaklarını, salgın ve kıtlıklarını, dini/tasavvufi ve gündelik yaşamını, Osmanlı'dan Çanakkale ve İstiklâl Harbi'ne askerlerini/şehitlerini ve Cumhuriyet dönemi göç serüvenini katmanlı biçimde ele al; orijinal belge kesitlerini ilgili bölümlere tıpkıbasım levha olarak yerleştir.
+```
+
+---
+
+## 5. Çok Sayfalı Defter veya Yazma Eseri 10 Paralel Alt-Ajan (`Subagents`) + Ortak Sözlük (`glossary.md`) ile Okutma
+
+*Kullanım zamanı: Elinizde 20–100+ sayfalık toplu bir Nüfus/Temettuat/Şer'iyye defteri veya Arapça/Osmanlıca el yazması PDF dosyası olduğunda.*
+
+```markdown
+Bu proje klasöründeki çok sayfalı arşiv defteri / el yazması dosyasını (`defter.pdf` veya görüntü klasörü) paralel alt-ajan orkestrasyonuyla eksiksiz oku ve tercüme/transkripsiyon et:
+
+1. Önce sayfaları ayrı görüntülere çıkar ve proje klasöründe tüm ajanların ortak okuyup güncelleyeceği bir `glossary.md` (sülale lakapları, şahıs/yer adları, teknik terimler ve yazım kuralları sözlüğü) dosyası oluştur.
+2. Sayfaları **10'arlı gruplar halinde paralel alt-ajanlara (`subagent`)** dağıt: aynı anda çalışan 10 ajan kendi sayfasını 1:1 kesit disipliniyle okuyup `sayfalar/sayfa_001.md`, `sayfa_002.md` ... şeklinde kaydetsin; okunamayan yerleri uydurmayıp `[...]` şerhi düşsün ve yeni tespit ettiği terimleri/lakapları ortak `glossary.md` için raporlasın.
+3. Tüm sayfalar tamamlandığında ayrı bir **Tutarlılık ve Tahkik Editörü Alt-Ajanı** görevlendir; `glossary.md` üzerinden tüm sayfalardaki şahıs adlarını, lakapları, tarihleri ve kavram birliğini baştan sona denetleyip tek parça nihai metin ve dizin dosyasını oluştur.
 ```

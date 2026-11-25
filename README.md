@@ -1,8 +1,25 @@
+---
+title: Devlet Arşivleri Soy Kütüğü & Köy Tarihi AI Skill
+emoji: 📜
+colorFrom: yellow
+colorTo: blue
+sdk: gradio
+sdk_version: 5.23.0
+app_file: app.py
+pinned: true
+license: mit
+short_description: 1500'lere kadar 1:1 kanıtlı Osmanlı soy kütüğü ve arşiv aracı
+---
+
 # Devlet Arşivleri Soy Kütüğü ve Köy Tarihi Araştırma Becerisi (`devlet-arsivleri-soykutugu`)
 
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Bir%20Kahve%20Ismarla-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/shnfatih8)
+[![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-Projeye%20Destek%20Ol-ea4aaa?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/shnfatih-hash)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-shnfatih--hash%2Fdevlet--arsivleri--soykutugu-181717?style=for-the-badge&logo=github)](https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu)
+
 > **e-Devlet Alt-Üst Soy Bilgisi** belgeniz belli bir tarihte kesiliyor mu?  
-> Bu açık kaynaklı yapay zekâ becerisi (**Agent Skill**), şifrenizi hiçbir yere vermeden **T.C. Cumhurbaşkanlığı Devlet Arşivleri Başkanlığı Kataloğu** ve indirdiğiniz orijinal Osmanlıca el yazması defterler üzerinden **anne ve baba tarafı soy ağacınızı**, **köyünüzün eski adını ve tarihini** 1:1 piksel belge kesitleriyle **1500'lü yıllara kadar** kanıtlı biçimde indirmenizi sağlar.  
-> *Bu çalışma, **Said Sürücü**'nün seminerinden hareketle hazırlanmış ve geliştirilmiştir; ufuk açıcı katkıları için kendisine içtenlikle teşekkür ederiz.*
+> Bu açık kaynaklı yapay zekâ becerisi (**Agent Skill** + **Canlı Web Aracı**), şifrenizi hiçbir yere vermeden **T.C. Cumhurbaşkanlığı Devlet Arşivleri Başkanlığı Kataloğu** ve indirdiğiniz orijinal Osmanlıca el yazması defterler üzerinden **anne ve baba tarafı soy ağacınızı**, **köyünüzün eski adını, bölgesel göç/iskân geçmişini ve tarihini** 1:1 piksel belge kesitleriyle **1500'lü yıllara kadar** kanıtlı biçimde indirmenizi sağlar.  
+> *Bu çalışma, **Said Sürücü**'nün seminerinden hareketle hazırlanmış ve topluluk geri bildirimleriyle geliştirilmiştir; ufuk açıcı katkıları için kendisine ve deneyimleriyle katkı sunan tüm araştırmacılara içtenlikle teşekkür ederiz.*
 
 ---
 
@@ -11,48 +28,45 @@
 1. [Neden e-Devlet Soy Ağacı Herkeste Farklı Bir Tarihte Kesilir? ("Kütük Duvarı")](#1-neden-e-devlet-soy-ağacı-herkeste-farklı-bir-tarihte-kesilir-kütük-duvarı)
 2. [500 Yıllık Geriye Gidiş Merdiveni (2026 → 1500)](#2-500-yıllık-geriye-gidiş-merdiveni-2026--1500)
 3. [Gerekli Resmi İnternet Siteleri, Portallar ve Program Adresleri](#3-gerekli-resmi-internet-siteleri-portallar-ve-program-adresleri)
-4. [Kurulum: Skill Paketi ve Chrome DevTools MCP Ayarı](#4-kurulum-skill-paketi-ve-chrome-devtools-mcp-ayarı)
-5. [Adım Adım Metodoloji: Arşivde Sıfır Hatayla Soy Sürme](#5-adım-adım-metodoloji-arşivde-sıfır-hatayla-soy-sürme)
-   - [Adım 1: Arşive Girmeden Önce Çıkarılacak 4 Altın İpucu](#adım-1-arşive-girmeden-önce-çıkarılacak-4-altın-ipucu)
-   - [Adım 2: Doğru Defter Serilerini Tanımak](#adım-2-doğru-defter-serilerini-tanımak)
-   - [Adım 3: Bütçe ve Zaman Koruyan "Önce Fihrist Testi → Nokta Atışı İndirme" Taktiği](#adım-3-bütçe-ve-zaman-koruyan-önce-fihrist-testi--nokta-atışı-indirme-taktiği)
-   - [Adım 4: 1:1 Piksel Kesitiyle Paleografik Okuma ve Kuşak Matematiği](#adım-4-11-piksel-kesitiyle-paleografik-okuma-ve-kuşak-matematiği)
-   - [Adım 5: Kanıt Seviyeleri ve En Sık Yapılan 5 Hata](#adım-5-kanıt-seviyeleri-ve-en-sık-yapılan-5-hata)
-6. [Defterde Karşılaşacağınız 15 Temel Osmanlıca Arşiv Kelimesi](#6-defterde-karşılaşacağınız-15-temel-osmanlıca-arşiv-kelimesi)
-7. [Göçmen ve Mübadil Aileler İçin Rehber (Balkanlar, Adalar, Girit ve Kafkasya)](#7-göçmen-ve-mübadil-aileler-için-rehber-balkanlar-adalar-girit-ve-kafkasya)
-8. [5 Adımda Hızlı Başlangıç ve Kopyala–Yapıştır Ana Prompt](#8-5-adımda-hızlı-başlangıç-ve-kopyalayapıştır-ana-prompt)
-9. [Paket Yapısı, Teşekkür ve Lisans](#9-paket-yapısı-teşekkür-ve-lisans)
+4. [Kurulum, Proje Klasörü Düzeni ve Chrome DevTools MCP Ayarı](#4-kurulum-proje-klasörü-düzeni-ve-chrome-devtools-mcp-ayarı)
+5. [⚠️ Sık Karşılaşılan Hata: "Web Sayfasına Erişim Engellendi" Ekranı ve Kesin Çözümü](#5-️-sık-karşılaşılan-hata-web-sayfasına-erişim-engellendi-ekranı-ve-kesin-çözümü)
+6. [Adım Adım Metodoloji: Arşivde Sıfır Hatayla Soy Sürme](#6-adım-adım-metodoloji-arşivde-sıfır-hatayla-soy-sürme)
+7. [Defterde Karşılaşacağınız 15 Temel Osmanlıca Arşiv Kelimesi](#7-defterde-karşılaşacağınız-15-temel-osmanlıca-arşiv-kelimesi)
+8. [Göçmen ve Mübadil Aileler İçin Rehber (Balkanlar, Adalar, Girit ve Kafkasya)](#8-göçmen-ve-mübadil-aileler-için-rehber-balkanlar-adalar-girit-ve-kafkasya)
+9. [Çok Sayfalı Defter ve El Yazmalarını 10 Paralel Alt-Ajan ile Okutma / Tercüme](#9-çok-sayfalı-defter-ve-el-yazmalarını-10-paralel-alt-ajan-ile-okutma--tercüme)
+10. [5 Adımda Hızlı Başlangıç ve Kopyala–Yapıştır Ana Prompt](#10-5-adımda-hızlı-başlangıç-ve-kopyalayapıştır-ana-prompt)
+11. [Paket Yapısı, Kardeş Projeler, Gönüllü Destek ve Lisans](#11-paket-yapısı-kardeş-projeler-gönüllü-destek-ve-lisans)
 
 ---
 
 ## 1. Neden e-Devlet Soy Ağacı Herkeste Farklı Bir Tarihte Kesilir? ("Kütük Duvarı")
 
-e-Devlet'ten aldığınız *Alt-Üst Soy Bilgisi* belgesinin 1840'larda, 1880'lerde veya 1905'te aniden kesilmesi kayıtların yok olduğu anlamına **gelmez**. Bunun üç tarihsel nedeni vardır:
+e-Devlet'ten aldığınız *Alt-Üst Soy Bilgisi* belgesinin (veya **İl/İlçe Nüfus Müdürlüğü**'nden aldığınız kayıt örneğinin) 1840'larda, 1880'lerde veya 1905'te aniden kesilmesi kayıtların yok olduğu anlamına **gelmez**. Bunun üç tarihsel nedeni vardır:
 
 1. **Her bölgede farklı başlangıç yılı:** Modern nüfus kütüklerine dayanak olan Osmanlı *Sicill-i Nüfus Esas (Atîk) Defterleri* her vilayette aynı yıl tutulmadı. Kimi sancakta **1881–1883 (`R. 1297–1299`)**, kimi yerde **1904–1905 (`R. 1320`)** sayımı esas alındı; savaş, işgal veya hükümet konağı yangını yaşayan yerlerde ise kütükler daha geç yenilendi.
 2. **İlk sayımdan önce vefat eden büyük dedeler:** Esas kütük yazılmadan önce vefat etmiş bir ata için kütükte müstakil satır açılmaz; adı yalnızca hayattaki çocuğunun **"Baba Adı"** sütununda asılı kalır.
 3. **1934 öncesi lakaplar ve değişen köy adları:** *Soyadı Kanunu* (1934) öncesinde aileler **sülale lakaplarıyla** (`...oğulları`, `...zâde`, `...uşağı`), köyler ise **eski Osmanlıca adlarıyla** ve farklı idari birimlere (bugünkünden farklı kaza/nahiyelere) bağlı olarak kaydedildiğinden klasik metin aramasıyla iz sürmek zorlaşır.
 
-> **İyi Haber:** 1500'lerden 1900'lerin başına uzanan milyonlarca sayfalık Osmanlı nüfus, temettuat, şer'iyye sicili, avârız ve tapu tahrir defteri **T.C. Cumhurbaşkanlığı Devlet Arşivleri**'nde dijital olarak durmaktadır!
+> **İyi Haber:** 1500'lerden 1900'lerin başına uzanan milyonlarca sayfalık Osmanlı nüfus, temettuat, şer'iyye sicili, avârız/cizye ve tapu tahrir defteri **T.C. Cumhurbaşkanlığı Devlet Arşivleri**'nde dijital olarak durmaktadır!
 
 ---
 
 ## 2. 500 Yıllık Geriye Gidiş Merdiveni (2026 → 1500)
 
 ```text
-  2026  ●  Bugün — e-Devlet Alt-Üst Soy Bilgisi PDF'i (Başlangıç noktası)
+  2026  ●  Bugün — e-Devlet Alt-Üst Soy PDF'i veya Nüfus Müdürlüğü Kayıt Örneği
         │
   1905  ◉  Kütük Duvarı — Sicill-i Nüfus aile esas kütüklerinin başlangıcı (1881–1905)
         │
-  1845  ●  Temettuat Defterleri (ML.VRD.TMT.d) — Hane reisinin mesleği, tarlası, hayvanları ve geliri
+  1845  ●  Temettuat Defterleri (ML.VRD.TMT.d) — Hane reisinin lakabı, mesleği, tarlası ve geliri
         │
   1831  ●  Nüfus & Yoklama Defterleri (NFS.d) — Boy/sakal eşkâlli erkek sayımları, doğum/ölüm/askerlik
         │
-  1750  ●  Kadı (Şer'iyye) Sicilleri (MŞH.ŞSC.d) & Mühimme — Tereke (miras: eş ve kız çocukları dâhil!)
+  1750  ●  Kadı (Şer'iyye) Sicilleri (MŞH.ŞSC.d) — Mahkeme ve Tereke (miras: eş ve kız çocukları dâhil!)
         │
-  1642  ●  Avârız ve Mukataa Defterleri (MAD.d) — Vergi haneleri ve aşiret/cemaat listeleri
+  1642  ●  Avârız ve Cizye Defterleri (MAD.d / D..BŞM.CZY.d) — Vergi haneleri, cemaat ve aşiret listeleri
         │
-  1500  ●  Tapu Tahrir Defterleri (TT.d / TK.GM.d) — Köyün ilk Osmanlı kaydı ve baba adlarıyla mükellefler
+  1500  ●  Tapu Tahrir Defterleri (TT.d / TK.GM.d) — Köyün ilk kaydı, mükellefler ve bölgesel göç/boy izleri
 ```
 
 ---
@@ -62,7 +76,7 @@ e-Devlet'ten aldığınız *Alt-Üst Soy Bilgisi* belgesinin 1840'larda, 1880'le
 ### A. Resmi Arşiv ve Nüfus Portalları
 | Kurum / Hizmet | Resmi İnternet Adresi | Ne İşe Yarar? |
 | :--- | :--- | :--- |
-| **e-Devlet — Alt-Üst Soy Bilgisi (NVİGM)** | https://www.turkiye.gov.tr/nvi-alt-ust-soy-bilgisi-sorgulama | Anne ve baba tarafı başlangıç soy ağacı PDF belgesini indirmenizi sağlar. |
+| **e-Devlet — Alt-Üst Soy Bilgisi (NVİGM)** | https://www.turkiye.gov.tr/nvi-alt-ust-soy-bilgisi-sorgulama | Anne ve baba tarafı başlangıç soy ağacı PDF belgesini indirmenizi sağlar *(alternatif olarak İl/İlçe Nüfus Müdürlüğü'nden nüfus bilgisi istenebilir)*. |
 | **e-Devlet — İsim Denklik Belgesi (NVİGM)** | https://www.turkiye.gov.tr/nvi-isim-denklik-belgesi-talep-ve-sorgulama | Balkanlar, Adalar ve Kafkasya'dan gelen göçmen/mübadil ataların eski kayıtlarını sorgular. |
 | **Devlet Arşivleri Başkanlığı Kataloğu (DAB)** | https://katalog.devletarsivleri.gov.tr | e-Devlet ile **ücretsiz** girilen Osmanlı ve Cumhuriyet Arşivleri dijital belge arama sistemi. |
 | **DAB — Basit & Detaylı Arama Ekranları** | https://katalog.devletarsivleri.gov.tr/Sayfalar/Arama/Arama.aspx <br/> https://katalog.devletarsivleri.gov.tr/Sayfalar/Arama/OzelArama.aspx | Anahtar kelime veya doğrudan Fon Kodu (`NFS.d`, `TT.d`, `MAD.d` vb.) ve defter numarasıyla arama ekranları. |
@@ -75,17 +89,25 @@ e-Devlet'ten aldığınız *Alt-Üst Soy Bilgisi* belgesinin 1840'larda, 1880'le
 ### B. Gerekli Programlar ve Yapay Zekâ / MCP Bileşenleri
 | Yazılım / Paket | İndirme ve Dokümantasyon Adresi | Görevi |
 | :--- | :--- | :--- |
-| **Google Antigravity** | https://antigravity.google | Bu beceriyi (`SKILL.md`) çalıştıran, tarayıcıya bağlanan ve 1:1 belge kesitlerini okuyan ajan ortamı. *(Claude Code, Cursor ve Codex ile de uyumludur.)* |
-| **Google Chrome** | https://www.google.com/chrome/ | Devlet Arşivleri oturumunuzu açacağınız tarayıcı. Uzak bağlantı ayarı: `chrome://inspect/#remote-debugging` |
+| **Google Antigravity** | https://antigravity.google | Bu beceriyi (`SKILL.md`) çalıştıran, Chrome MCP'ye bağlanan ve 1:1 belge kesitlerini okuyan ajan ortamı. *(Claude Code, Cursor ve Codex ile de uyumludur.)* |
+| **Google Chrome (Normal Masaüstü Tarayıcı)** | https://www.google.com/chrome/ | Devlet Arşivleri oturumunuzu açacağınız tarayıcı. Uzak bağlantı ayarı: `chrome://inspect/#remote-debugging` |
 | **Node.js (LTS)** | https://nodejs.org | `npx` üzerinden Chrome DevTools MCP sunucusunu çalıştırmak için gereklidir. |
 | **Chrome DevTools MCP** | https://github.com/ChromeDevTools/chrome-devtools-mcp <br/> https://www.npmjs.com/package/chrome-devtools-mcp | Yapay zekânın şifrenizi görmeden açık Chrome sekmenizde katalog araması yapmasını sağlayan resmi MCP köprüsü. |
 | **Python 3 + Pillow** | https://www.python.org (`pip install Pillow`) | İndirdiğiniz `.zip / .jpg` arşiv sayfalarını sağ/sol varaklara bölen ve 1:1 piksel kesiti alan `scripts/crop_and_verify.py` betiği için gereklidir. |
 
 ---
 
-## 4. Kurulum: Skill Paketi ve Chrome DevTools MCP Ayarı
+## 4. Kurulum, Proje Klasörü Düzeni ve Chrome DevTools MCP Ayarı
 
-### A. Skill Paketini Tek Komutla Kurma
+### A. İlk Adım: Bilgisayarınızda Özel Bir Proje Klasörü Açın (`Önemli!`)
+
+Belgelerin, 1:1 piksel kesitlerinin ve oluşturulan Word/HTML soyağacı raporlarının tek bir yerde düzenli toplanması için:
+1. Masaüstünüzde veya Belgelerim'de yeni bir klasör oluşturun (ör. **`Soy_Kutugu_Arastirmam`**).
+2. e-Devlet'ten indirdiğiniz *Alt-Üst Soy Bilgisi* PDF dosyanızı (ve varsa daha önce indirdiğiniz arşiv `.zip / .jpg` dosyalarını) bu klasörün içine atın.
+3. **Google Antigravity**'yi açıp sol menüden **`Open Folder` / Yeni Proje** diyerek bu klasörü seçin.
+4. Araştırma sırasında Antigravity sizden yardımcı paket kurma (`Pillow`), piksel kesiti alma veya Word/HTML rapor dosyası oluşturma izni istediğinde (**`Yes, allow` / `Submit`**) onay verin ki tüm belgeleri klasörünüze kaydedebilsin.
+
+### B. Skill Paketini Tek Komutla Kurma
 
 Terminalinizi (Windows'ta **PowerShell**, macOS/Linux'ta **Terminal**) açıp kullandığınız yapay zekâ aracına göre aşağıdaki tek satırlık komutu çalıştırın:
 
@@ -114,7 +136,7 @@ git clone https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu.git ~/.cla
 pip install Pillow
 ```
 
-### B. Chrome DevTools MCP Bağlantısı (Canlı Katalog Taraması İçin)
+### C. Chrome DevTools MCP Bağlantısı (Canlı Katalog Taraması İçin)
 
 1. Antigravity MCP yapılandırma dosyanıza (`~/.gemini/config/mcp_config.json`) şu bloğu ekleyin (veya eklenti yöneticisinden resmi **Chrome DevTools** eklentisini etkinleştirin):
    ```json
@@ -127,55 +149,79 @@ pip install Pillow
      }
    }
    ```
-2. Google Chrome'da yeni bir sekme açıp adres çubuğuna **`chrome://inspect/#remote-debugging`** yazarak Enter'a basın ve **"Enable remote debugging"** kutucuğunu işaretleyin.
-3. Yeni bir sekmede **`https://katalog.devletarsivleri.gov.tr`** adresini açıp **"e-Devlet ile Giriş"** butonundan bizzat giriş yapın. *(Şifreniz ve T.C. Kimlik Numaranız hiçbir aşamada yapay zekâya verilmez!)*
+2. Bilgisayarınızdaki **normal Google Chrome** tarayıcısında yeni bir sekme açıp adres çubuğuna **`chrome://inspect/#remote-debugging`** yazarak Enter'a basın ve **"Enable remote debugging"** kutucuğunu işaretleyin.
+3. Yine **normal Google Chrome**'da yeni bir sekmede **`https://katalog.devletarsivleri.gov.tr`** adresini açıp **"e-Devlet ile Giriş"** butonundan bizzat giriş yapın. *(Şifreniz ve T.C. Kimlik Numaranız hiçbir aşamada yapay zekâya verilmez!)*
 
 ---
 
-## 5. Adım Adım Metodoloji: Arşivde Sıfır Hatayla Soy Sürme
+## 5. ⚠️ Sık Karşılaşılan Hata: "Web Sayfasına Erişim Engellendi" Ekranı ve Kesin Çözümü
+
+Bazı kullanıcılarımız Antigravity'ye *"Devlet Arşivleri'ne gir"* dediğinde sağ panelde şu kırmızı uyarı ekranıyla karşılaşmaktadır:
+
+> **❗ T.C. Cumhurbaşkanlığı Devlet Arşivleri Başkanlığı — Web Sayfasına Erişim Engellendi**  
+> *Erişmeye çalıştığınız web sayfası, kurum politikaları doğrultusunda engellenmiştir.*
+
+### Bu Hata Neden Çıkar?
+Bu ekran, Antigravity'nin **kendi içindeki yerleşik tarayıcısı (*built-in browser*)** açıldığında ortaya çıkar. Devlet Arşivleri güvenlik duvarı, gömülü uygulama içi tarayıcıları bot/kurum dışı istemci sayarak otomatik engeller.
+
+### 3 Adımda Kesin Çözüm (Nasıl Aşılır?)
+1. **Dahili Tarayıcıyı Kapatın:** Antigravity penceresinin sağ tarafında açılan gömülü tarayıcı sekmesini kapatın.
+2. **Normal Google Chrome'dan Giriş Yapın:** Bilgisayarınızda her zaman kullandığınız **normal Google Chrome** tarayıcısını açın:
+   - Bir sekmede `chrome://inspect/#remote-debugging` adresine gidip **`Enable remote debugging`** kutusunu işaretleyin.
+   - Diğer sekmede `https://katalog.devletarsivleri.gov.tr` adresine normal e-Devlet şifrenizle giriş yapın (normal Chrome'da hiçbir engel çıkmaz).
+3. **Antigravity'ye Chrome MCP ile Bağlanmasını Söyleyin:** Sohbet kutusuna şu net cümleyi yazın:
+   > *"Antigravity'nin kendi dahili tarayıcısını AÇMA; doğrudan **Chrome DevTools MCP** üzerinden bilgisayarımda açık olan normal Google Chrome sekmeme bağlanarak devam et."*
+
+💡 **Hiç MCP Kurmadan Devam Etme Alternatifi (Sıfır Ayar):** Eğer Chrome MCP ayarıyla uğraşmak istemezseniz, normal Chrome tarayıcınızdan Devlet Arşivleri'ne kendiniz girip köyünüzün defter pozlarını `.zip` veya `.jpg` olarak proje klasörünüze indirin ve Antigravity'ye sadece *"Klasöre indirdiğim arşiv belgelerini `devlet-arsivleri-soykutugu` ile 1:1 kesit alarak oku"* deyin!
+
+---
+
+## 6. Adım Adım Metodoloji: Arşivde Sıfır Hatayla Soy Sürme
 
 ### Adım 1: Arşive Girmeden Önce Çıkarılacak 4 Altın İpucu
-Milyonlarca belge içinde doğru defteri bulmak için işe şu 4 bilgiyi netleştirerek başlıyoruz:
-1. **Köyün / Mahallenin Eski Adı:** Cumhuriyet döneminde pek çok yerleşimin adı Türkçeleştirildi veya değiştirildi. Arşivde arama daima **Osmanlıca eski adla** ve harf varyantlarıyla (`k/g`, `t/d`, `b/p`, `c/ç`) yapılır.
-2. **Eski Sülale Lakapları ve Oymak Adları:** 1934 öncesi aileler `"…oğulları"`, `"…zâde"`, `"…uşağı"` gibi lakaplarla yazılırdı.
-3. **Kütükteki En Eski Ataların Adı ve Doğum Yılları:** Alt-Üst Soy PDF'inizdeki en dip satırlar ve bu kişilerin "Baba Adı" sütunundaki isimler.
+Milyonlarca belge içinde doğru defteri bulmak için işe e-Devlet *Alt-Üst Soy Bilgisi* belgenizden (veya **İl/İlçe Nüfus Müdürlüğü**'nden alınan nüfus kayıt bilgisinden) şu 4 ipucunu netleştirerek başlıyoruz:
+1. **Köyün / Mahallenin Eski Adı:** Cumhuriyet döneminde pek çok yerleşimin adı değiştirildi. Arşivde arama daima **Osmanlıca eski adla** ve harf varyantlarıyla (`k/g`, `t/d`, `b/p`, `c/ç`) yapılır.
+2. **Eski Sülale Lakapları ve Oymak Adları (`İşinizi En Çok Kolaylaştıran Anahtar`):** 1934 öncesi aileler `"…oğulları"`, `"…zâde"`, `"…uşağı"` gibi lakaplarla yazılırdı; aile büyüklerinden bilinen lakapları mutlaka nota ekleyin.
+3. **Kütükteki En Eski Ataların Adı ve Doğum Yılları:** Belgenizdeki en dip satırlar ve bu kişilerin "Baba Adı" sütunundaki isimler.
 4. **Osmanlı İdari Birimi (`Sancak / Kazâ / Nâhiye`):** Defterler bugünkü ilçelere göre değil, dönemin idari sınırlarına göre tutulmuştur (bugün A ilçesine bağlı bir köy, 1840'ta komşu B nahiyesinin defterinde olabilir!).
 
-### Adım 2: Doğru Defter Serilerini Tanımak
-- **`NFS.d` (Nüfus Defterleri, 1830–1880'ler):** Köydeki tüm erkekleri hane hane, baba adıyla, yaşıyla (`sinn`), hatta **boy ve sakal/bıyık eşkâliyle** yazar; doğum, ölüm ve askerlik şerhlerini düşer.
-- **`MŞH.ŞSC.d` (Şer'iyye / Kadı Sicilleri):** Vefat eden ataların miras taksimini (**tereke**) içerir; eşini, oğullarını ve nüfus defterlerinde yer almayan **kız çocuklarını** tek tek sayar.
-- **`ML.VRD.TMT.d` & `MAD.d` (Temettuat ve Maliyeden Müdevver, 1600–1845):** 1844–1845 mal-mülk/gelir sayımlarını, 17. yüzyıl avârız vergi hanelerini ve aşiret/maden yükümlülüklerini barındırır.
-- **`TT.d` & `TK.GM.d` / `A.{DVNSMHM.d` / `MVL` (1500'ler →):** 500 yıllık mufassal köy tahrirlerini, padişah mühimme fermanlarını ve Meclis-i Vâlâ davalarını içerir.
+### Adım 2: Doğru Defter Serilerini ve Bölgesel Göç Bağlamını Tanımak
+- **`NFS.d` (Nüfus Defterleri, 1830–1880'ler):** Köydeki tüm erkekleri hane hane, baba adıyla, lakabıyla, yaşıyla (`sinn`), hatta **boy ve sakal/bıyık eşkâliyle** yazar; doğum, ölüm ve askerlik şerhlerini düşer.
+- **`ML.VRD.TMT.d` (Temettuat Defterleri, 1844–1845):** Hane reisinin mesleğini, tarla/bağ dönümünü, hayvan sayısını ve yıllık gelirini gösterir.
+- **`MŞH.ŞSC.d` (Şer'iyye / Kadı Mahkemesi Sicilleri):** Bağlı bulunan kazanın mahkeme kayıtlarını ve vefat eden ataların miras taksimini (**tereke**) içerir; eşini, oğullarını ve nüfus defterlerinde yer almayan **kız çocuklarını** tek tek sayar.
+- **`MAD.d` & `D..BŞM.CZY.d` (Avârız ve Cizye Defterleri, 1600–1850):** 17.–18. yüzyıl ayrıntılı avârız vergi hanelerini, aşiret/maden mükellefiyetlerini ve (gayrimüslim/karma veya ihtidâ geçmişi olan yerleşimlerde) **cizye** defterlerini barındırır.
+- **`TT.d` & `TK.GM.d` / `A.{DVNSMHM.d` (15.–16. Yüzyıl Tapu Tahrir + Bölgesel Göç ve Kavim/Boy Analizi):** Köyün 500 yıllık ilk Osmanlı kaydını ve baba adlarıyla vergi mükelleflerini verir. Bu katmanda ayrıca **o bölgeye yapılan tarihsel göçler, konar-göçer aşiret/cemaat tahrirleri (`Yörükân, Türkmen, Ekrâd, Tatar vb.`) ve iskân fermanları** dikkatle incelenerek bölgedeki potansiyel boy ve kavim dokusu belgesel kanıtlarıyla ortaya konulur.
 
 ### Adım 3: Bütçe ve Zaman Koruyan "Önce Fihrist Testi → Nokta Atışı İndirme" Taktiği
-- **Ücret Gerçeği:** Devlet Arşivleri Kataloğu'nda arama yapmak ücretsizdir; ancak filigransız yüksek çözünürlüklü her görüntü (poz) e-Satış sepetinden poz başı ücretle (ör. güncel tarifede poz başı cüzi bir bedelle) satın alınır. 300–500 sayfalık yanlış bir defteri toptan satın almak hem bütçeyi hem emeği boşa harcar!
+- **Ücret Gerçeği:** Devlet Arşivleri Kataloğu'nda arama yapmak ücretsizdir; ancak filigransız yüksek çözünürlüklü her görüntü (poz) e-Satış sepetinden poz başı ücretle satın alınır. 300–500 sayfalık yanlış bir defteri toptan satın almak hem bütçeyi hem emeği boşa harcar!
 - **1. Aşama (Fihrist Testi):** Defterin tamamını almadan önce sadece başındaki **Fihrist (`Mi=1..5`)** sayfalarını kontrol ettirin. Yapay zekâ fihristi ve tarihleri okuyarak yanlış dönem veya yanlış nahiyeye ait defterleri eler; doğru defterde ise **Poz (`Mi`) ≠ Varak (`vr.`)** kayma farkını hesaplayıp *"Aradığın köy Poz 33 ile 37 arasında!"* diyerek tam aralığı verir.
-- **2. Aşama (Nokta Atışı İndirme):** Sadece köyünüzün bulunduğu 3–10 pozu satın alıp `.zip / .jpg` olarak bilgisayarınızdaki çalışma klasörüne indirin.
+- **2. Aşama (Nokta Atışı İndirme):** Sadece köyünüzün bulunduğu 3–10 pozu satın alıp `.zip / .jpg` olarak bilgisayarınızdaki proje klasörüne indirin.
 
 ### Adım 4: 1:1 Piksel Kesitiyle Paleografik Okuma ve Kuşak Matematiği
 Sıradan sohbet botları Osmanlıca el yazması sayfaya uzaktan bakıp harfleri tahmin eder; köy ve şahıs adlarını uydurabilir. Bu beceri ise `scripts/crop_and_verify.py` aracılığıyla:
 1. İndirdiğiniz 3000 piksellik filigransız sayfaları Sağ (`R`) ve Sol (`L`) varaklara böler,
 2. Her kritik satırdan **1:1 doğal piksel yakınlaştırma kesiti (crop)** alarak harf noktalarını kanıtlı okur,
-3. **`+ΔYıl` Çapraz Sayım Matematiği** uygular (örneğin 1834 sayımında 4 yaşında yazılan çocuk, 6 yıl sonraki 1840 sayımında aynı babanın yanında ~10 yaşında, 1844 sayımında ~14 yaşında görünmelidir),
+3. **`+ΔYıl` Çapraz Sayım Matematiği** uygular (örneğin 1834 sayımında 4 yaşında yazılan çocuk, 6 yıl sonraki 1840 sayımında ~10 yaşında, 1844 sayımında ~14 yaşında görünmelidir),
 4. **`1/N` Nadir İsim ve Yan Soy Filtresi** ile sadece düz üst soyu değil; amcaları, kardeşleri, dede adını ilk toruna verme geleneğini ve lakapları çapraz doğrular *(Unutmayın: Bir kadının soyadı veya lakabı babasından değil, eşinin hanesinden veya dul kaldığında kendi adından gelebilir!)*.
 
 ### Adım 5: Kanıt Seviyeleri ve En Sık Yapılan 5 Hata
 
-Her eşleşme aynı kesinlikte değildir; bu beceri her bulguyu üç kanıt seviyesinden biriyle işaretler:
-- 🟢 **`[KESİN KANIT]`:** e-Devlet kütüğü, Esas Nüfus Defteri veya `isim + baba adı + lakap + köy + tutarlı yaş` zinciriyle doğrudan belgelenen kayıt.
+Her eşleşme aynı kesinlikte değildir; bu beceri her bulguyu dört şeffaf kanıt seviyesinden biriyle işaretler:
+- 🟢 **`[KESİN KANIT]`:** e-Devlet/Nüfus kütüğü, Esas Nüfus Defteri veya `isim + baba adı + lakap + köy + tutarlı yaş` zinciriyle doğrudan belgelenen kayıt.
 - 🟡 **`[GÜÇLÜ EŞLEŞME]`:** Aynı köy, nadir isim, uyumlu yaş ve kardeş dizilimi bir arada bulunan güçlü aday.
 - ⚪ **`[İSİM / SÜLALE İZİ]`:** Başka bir yüzyılda (ör. 1584 tahririnde) aynı köyde geçen aynı isim veya lakap; doğrudan kan bağı kanıtı sayılmaz, tarihsel süreklilik izi olarak belirtilir.
+- 🔵 **`[BÖLGESEL GÖÇ & CEMAAT BAĞLAMI]`:** 15.–18. yüzyıl tahrir ve mühimme kayıtlarında köyün/nahiyenin çevresinde belgelenen konar-göçer boy, aşiret veya iskân hareketleri.
 
 **En Sık Yapılan 5 Hata:**
-1. *Benzer köy adına aldanmak* → Sayfa başlığındaki `tâbi-i ...` (bağlı olduğu kaza/nahiye) ibaresini ve komşu köyleri mutlaka doğrulayın.
-2. *Yaş tutarsızlığını görmezden gelmek* → İki sayım arasındaki yıl farkı yaşlara yansımalıdır.
+1. *Antigravity'nin kendi dahili tarayıcısını açmak* → `"Web Sayfasına Erişim Engellendi"` hatası verir; daima normal Chrome + Chrome DevTools MCP kullanın.
+2. *Benzer köy adına aldanmak* → Sayfa başlığındaki `tâbi-i ...` (bağlı olduğu kaza/nahiye) ibaresini ve komşu köyleri mutlaka doğrulayın.
 3. *Dijital Poz (`Mi`) ile Osmanlıca Varak (`vr.`) numarasını karıştırmak* → Kapak ve boş sayfalar yüzünden arada sabit fark bulunur.
 4. *Filigranlı düşük çözünürlüklü okumaya körü körüne güvenmek* → Kritik satırları filigransız aslından 1:1 kesitle kontrol edin.
 5. *Hızlı paralel bot istekleriyle arşiv sitesini yormak* → `BelgeGoster` üzerinde çoklu paralel istek güvenlik engelini (`HTTP 418`) tetikler; daima sakin ve sıralı ilerleyin.
 
 ---
 
-## 6. Defterde Karşılaşacağınız 15 Temel Osmanlıca Arşiv Kelimesi
+## 7. Defterde Karşılaşacağınız 15 Temel Osmanlıca Arşiv Kelimesi
 
 | Terim | Osmanlıca | Anlamı |
 | :--- | :---: | :--- |
@@ -197,7 +243,7 @@ Her eşleşme aynı kesinlikte değildir; bu beceri her bulguyu üç kanıt sevi
 
 ---
 
-## 7. Göçmen ve Mübadil Aileler İçin Rehber (Balkanlar, Adalar, Girit ve Kafkasya)
+## 8. Göçmen ve Mübadil Aileler İçin Rehber (Balkanlar, Adalar, Girit ve Kafkasya)
 
 Ataları Anadolu dışından göç etmiş aileler için ayrıntılı kılavuz [`references/gocmen-ve-mubadil-rehberi.md`](./references/gocmen-ve-mubadil-rehberi.md) dosyasındadır. Özet yol haritası:
 
@@ -210,43 +256,60 @@ Ataları Anadolu dışından göç etmiş aileler için ayrıntılı kılavuz [`
 
 ---
 
-## 8. 5 Adımda Hızlı Başlangıç ve Kopyala–Yapıştır Ana Prompt
+## 9. Çok Sayfalı Defter ve El Yazmalarını 10 Paralel Alt-Ajan ile Okutma / Tercüme
 
-1. **Belgeni İndir:** [e-Devlet Alt-Üst Soy Bilgisi](https://www.turkiye.gov.tr/nvi-alt-ust-soy-bilgisi-sorgulama) PDF'inden en eski atalarını, doğum yıllarını ve köyünün eski adını çıkar (göçmensen [İsim Denklik Belgesi](https://www.turkiye.gov.tr/nvi-isim-denklik-belgesi-talep-ve-sorgulama) ve iskân yerini not et).
-2. **Kataloğa Gir:** Chrome'da `chrome://inspect/#remote-debugging` ayarını aç ve [katalog.devletarsivleri.gov.tr](https://katalog.devletarsivleri.gov.tr) adresine e-Devlet ile ücretsiz giriş yap.
+Elinizde 50–100+ sayfalık bir **Osmanlıca defter** veya **Arapça/Osmanlıca/Farsça bir el yazması PDF** varsa Antigravity'nin **paralel alt-ajan (`subagent`)** mimarisini kullanarak sayfaları tek tek beklemek yerine **10'ar 10'ar paralel** çevirtebilir veya okutabilirsiniz:
+
+1. **10'lu Paralel Gruplar:** Ana sohbet oturumunuz koordinatör olarak çalışır; aynı anda 10 alt-ajan arka planda farklı birer sayfayı (`sayfa_001.md` ... `sayfa_010.md`) çevirip kaydeder ve işi bitince kapanır.
+2. **Ortak Terim ve Lakap Sözlüğü (`glossary.md`):** Tüm alt-ajanlar ortak bir `glossary.md` dosyasını okur; teknik kavramların, şahıs adlarının ve lakapların her sayfada aynı karşılıkla çevrilmesini sağlar.
+3. **Son Tutarlılık Editörü Ajanı:** Tüm sayfalar tamamlandığında ayrı bir denetçi ajan tüm dosyaları baştan sona tarayarak sayfalar arası üslup ve kavram birliğini sağlar.
+
+> Hazır şablon istem için [`examples/ornek-kullanim-promptlari.md`](./examples/ornek-kullanim-promptlari.md) içindeki **5. Şablona**, kapsamlı yazma eser tercüme araçları için ise kardeş projemiz **[`shnfatih-hash/yazma-eser-paralel-tercume`](https://github.com/shnfatih-hash/yazma-eser-paralel-tercume)** deposuna göz atabilirsiniz.
+
+---
+
+## 10. 5 Adımda Hızlı Başlangıç ve Kopyala–Yapıştır Ana Prompt
+
+1. **Proje Klasörü Aç & Belgeni Koy:** Masaüstünde `Soy_Kutugu_Arastirmam` klasörü aç, Antigravity'de bu klasörü aç ve [e-Devlet Alt-Üst Soy Bilgisi](https://www.turkiye.gov.tr/nvi-alt-ust-soy-bilgisi-sorgulama) PDF'ini (veya Nüfus Müdürlüğü belgeni) içine koy.
+2. **Normal Chrome'da Kataloğa Gir:** Bilgisayarındaki **normal Google Chrome**'da `chrome://inspect/#remote-debugging` ayarını aç ve [katalog.devletarsivleri.gov.tr](https://katalog.devletarsivleri.gov.tr) adresine e-Devlet ile ücretsiz giriş yap *(Antigravity'nin kendi iç tarayıcısını kullanma)*.
 3. **Önce Fihristi Kontrol Ettir:** Tüm defteri hemen satın alma! Önce fihrist veya ilk 5–10 pozu Antigravity'ye kontrol ettirip doğru defter ve varak aralığını buldur.
-4. **Nokta Atışı İndir:** Sadece köyünün bulunduğu doğru sayfa aralığını e-Satış'tan indirip `.zip / .jpg` olarak bir klasöre koy.
-5. **1:1 Kanıtlı Okut:** Klasörü Google Antigravity'de aç ve aşağıdaki komutu gönder *(diğer senaryo şablonları için bkz. [`examples/ornek-kullanim-promptlari.md`](./examples/ornek-kullanim-promptlari.md))*:
+4. **Nokta Atışı İndir:** Sadece köyünün bulunduğu doğru sayfa aralığını e-Satış'tan indirip `.zip / .jpg` olarak proje klasörüne koy.
+5. **1:1 Kanıtlı Okut:** Aşağıdaki komutu kopyalayıp Antigravity'ye gönder *(diğer 4 senaryo şablonu için bkz. [`examples/ornek-kullanim-promptlari.md`](./examples/ornek-kullanim-promptlari.md))*:
 
 ```markdown
-Sana e-Devlet "Alt-Üst Soy Bilgisi" belgemi ve (varsa) Devlet Arşivleri'nden indirdiğim `.zip / .jpg` dosyalarını verdim; Chrome'da `https://katalog.devletarsivleri.gov.tr` oturumum da açık.
+Sana e-Devlet "Alt-Üst Soy Bilgisi" belgemi ve (varsa) Devlet Arşivleri'nden indirdiğim `.zip / .jpg` dosyalarını bu proje klasöründe verdim; normal Google Chrome'da `https://katalog.devletarsivleri.gov.tr` oturumum da açık.
 
-Lütfen `devlet-arsivleri-soykutugu` becerisini etkinleştirerek tahmin yürütmeden, her kritik hane ve şerh satırını 1:1 piksel belge kesitiyle doğrulayarak anne ve baba tarafı üst soyumu, kardeş/amca yan kollarını, köyümüzün eski adını, idari evrimini ve tarihî olaylarını kanıt seviyeleriyle (`[KESİN] / [GÜÇLÜ] / [İSİM İZİ]`) çıkar.
+ÖNEMLİ: Antigravity'nin kendi dahili tarayıcısını AÇMA ("Web Sayfasına Erişim Engellendi" hatası verir); doğrudan Chrome DevTools MCP ile açık Google Chrome sekmeme bağlan ve ürettiğin tüm 1:1 kesitleri ve raporları bu proje klasörüne kaydet.
+
+Lütfen `devlet-arsivleri-soykutugu` becerisini etkinleştirerek tahmin yürütmeden, her kritik hane ve şerh satırını 1:1 piksel belge kesitiyle doğrulayarak anne ve baba tarafı üst soyumu, kardeş/amca yan kollarını, köyümüzün eski adını, idari evrimini, 15.–16. yy. bölgesel göç/boy bağlamını ve tarihî olaylarını kanıt seviyeleriyle (`[KESİN] / [GÜÇLÜ] / [İSİM İZİ] / [BÖLGESEL GÖÇ BAĞLAMI]`) çıkar.
 ```
 
 ---
 
-## 9. Paket Yapısı, Teşekkür ve Lisans
+## 11. Paket Yapısı, Kardeş Projeler, Gönüllü Destek ve Lisans
 
 ```text
 devlet-arsivleri-soykutugu/
 ├── SKILL.md                                         # Yapay zekâ ajanları için ana beceri yönergesi
-├── README.md                                        # Kurulum, metodoloji, resmi linkler ve kullanım kılavuzu
+├── README.md                                        # Kurulum, sorun giderme, metodoloji ve kullanım kılavuzu
+├── app.py                                           # Hugging Face Spaces canlı Gradio web aracı
+├── requirements.txt                                 # Web aracı ve görüntü işleme bağımlılıkları
 ├── LICENSE                                          # MIT Açık Kaynak Lisansı
 ├── references/
-│   ├── fon-kodlari-ve-paleografya-rehberi.md        # 1500–1925 fon kodları, takvim hesabı, harf varyantları & sözlük
+│   ├── fon-kodlari-ve-paleografya-rehberi.md        # 1500–1925 fon kodları (Cizye & boy/iskân dâhil), takvim & sözlük
 │   └── gocmen-ve-mubadil-rehberi.md                 # Balkanlar, Adalar, Girit ve Kafkasya göçmen/mübadil kılavuzu
 ├── scripts/
 │   ├── dab_helpers.js                               # Chrome DevTools MCP sıralı/WAF korumalı arama ve varak yardımcıları
 │   ├── crop_and_verify.py                           # .zip/.jpg defterlerden varak bölme ve 1:1 piksel kesit alma aracı
 │   └── tarih_cevirici.py                            # 3 yönlü Hicrî ↔ Rûmî ↔ Milâdî kesin tarih çevirici (TTK bağlantılı)
 └── examples/
-    └── ornek-kullanim-promptlari.md                 # 4 farklı senaryo için hazır kopyala-yapıştır istem şablonları
+    └── ornek-kullanim-promptlari.md                 # 5 farklı senaryo için hazır kopyala-yapıştır istem şablonları
 ```
 
-### Kardeş Proje (Osmanlıca Resmî Evraklar İçin)
+### Kardeş Projeler (Osmanlıca Resmî Evrak & Yazma Eser Paralel Tercüme)
 
-Ferman, Berat, İrade-i Seniyye, Tahrirat, Mazbata, Arz-ı Hâl, Hüccet ve Telgrafname gibi resmî belgeleri üniversitelerde geçerli **TDV İA / TTK transkripsiyon sistemi**, şerh (kritik aparat), kelime/tamlama çözümlemeli interaktif HTML ve Kubbealtı/TDV İslâm Ansiklopedisi atıflarıyla okumak için kardeş beceriye göz atın: **[`shnfatih-hash/osmanlica-resmi-evrak`](https://github.com/shnfatih-hash/osmanlica-resmi-evrak)**
+- **[`shnfatih-hash/osmanlica-resmi-evrak`](https://github.com/shnfatih-hash/osmanlica-resmi-evrak):** Ferman, Berat, İrade-i Seniyye, Tahrirat, Mazbata, Arz-ı Hâl, Hüccet ve Vakfiyeleri **TDV İA / TTK transkripsiyon sistemi**, şerh (kritik aparat) ve kelime/tamlama çözümlemeli interaktif HTML çalışma kartıyla okuma becerisi.
+- **[`shnfatih-hash/yazma-eser-paralel-tercume`](https://github.com/shnfatih-hash/yazma-eser-paralel-tercume):** Çok sayfalı Arapça, Osmanlıca ve Farsça el yazması PDF/görsel eserleri **10'lu paralel alt-ajan (`subagents`)**, ortak terim sözlüğü (`glossary.md`) ve son tutarlılık editörü ajanıyla tercüme ve tahkik becerisi.
 
 ### Teşekkür ve İlham Kaynağı
 

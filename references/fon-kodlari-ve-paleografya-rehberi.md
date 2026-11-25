@@ -15,10 +15,19 @@ Bu başvuru kılavuzu, `devlet-arsivleri-soykutugu` becerisi kapsamında **T.C. 
 | `MŞH.ŞSC.d..` | **Meşihat Şer'iyye (Kadı) Sicilleri** | 1450–1924 | Kadı mahkemesi kayıtları. Özellikle vefat eden ataların **tereke (miras taksimi)** kayıtlarında müteveffanın eşi, oğulları, **kız çocukları** (nüfus defterlerinde yazılmayan kadın ataları bulmanın en kesin yolu!), kardeşleri ve ev eşyası/kitapları tek tek sayılır. (Ayrıca bkz. `https://kadisicilleri.org`). |
 | `A.{RSK.d...` | **Bâb-ı Âsafî Ruûs Kalemi Defterleri** | 1835–1838 (`H. 1251–1254`) | II. Mahmud döneminde muhtarlık teşkilatı kurulurken tutulan **köy imam, muhtar-ı evvel, muhtar-ı sânî ve kâhya defterleri**; bir kazadaki tüm köylerin eksiksiz listesini verir. |
 | `MAD.d..` | **Maliyeden Müdevver Defterler** | 15.–19. yy. | Celâlî sonrası *Mufassal Avârız* hane defterleri (ör. 1642 sayımları), *Cizye* defterleri, aşiret/cemaat vergi listeleri, mukataa ve erken nüfus yoklama kayıtları. |
-| `TT.d...` & `TK.GM.d...` | **Tapu Tahrir ve Kuyûd-ı Kadîme Defterleri** | 1450–1600 | Klasik Osmanlı *Mufassal* (köydeki vergi mükellefi erkeklerin baba adlarıyla tam listesi, çift/bennâk/mücerred statüleri, tımar ve vakıf hasılatı) ve *İcmal* defterleri. 500 yıllık köy kökünün ana kaynağıdır. |
+| `D..BŞM.CZY.d` / `ML.VRD.CMH.d` | **Cizye Muhasebesi Defterleri** | 16.–19. yy. | Gayrimüslim tebaa (*a‘lâ, evsat, ednâ* vergi dilimleriyle hane/nefer listeleri), karma köylerin demografik yapısı ve ihtidâ/iskân izleri için birincil defter serisidir. |
+| `TT.d...` & `TK.GM.d...` | **Tapu Tahrir ve Kuyûd-ı Kadîme Defterleri** | 1450–1600 | Klasik Osmanlı *Mufassal* (köydeki vergi mükellefi erkeklerin baba adlarıyla tam listesi, çift/bennâk/mücerred statüleri, tımar ve vakıf hasılatı), *İcmal* ve *Yörükân / Konar-Göçer Cemaat* defterleri. 500 yıllık köy kökünün ve boy/oymak yapısının ana kaynağıdır. |
 | `D..CRD.d...` / `ML.CRD.d...` | **Cerîde Odası Defterleri** | 18.–19. yy. | Erken nüfus yoklama icmalleri, cizye ve konar-göçer aşiret/oymak kayıtları. |
 | `EV.d...` / `EV.HMH.d...` | **Evkaf Defterleri** | 17.–20. yy. | Köy camii, mescit, medrese, zaviye ve çeşme vakıfları ile imam, hatip ve mütevelli tevcih kayıtları. |
 | `A.{DVNSMHM.d...` | **Mühimme Defterleri** | 16.–19. yy. | Divân-ı Hümâyûn padişah fermanları: aşiret iskânı, eşkıya baskınları, sürgünler, maden/köprü mükellefiyetleri ve büyük yerel davalar. |
+
+### A2. 15.–18. Yüzyıl Bölgesel Göç, İskân ve Boy / Cemaat / Kavim Araştırma Katmanı
+
+Köyün 15.–16. yüzyıl tahrir kayıtları incelenirken yalnızca tekil hane isimlerine bakmakla yetinmeyip bölgenin tarihsel iskân ve nüfus hareketlerini şu kaynak katmanlarıyla birlikte değerlendirin:
+
+1. **Konar-Göçer Cemaat ve Oymak Tahrirleri (`TT.d`, `MAD.d`, `KK.d`):** Tahrir defterlerinde köy başlığının hemen altında veya müstakil *Cemâ‘at-i ... tâbi‘-i ...* başlıkları altında kaydedilen Yörük, Türkmen, Ekrâd, Tatar ve diğer konar-göçer toplulukların kışlak/yaylak mezralardan yerleşik köye (*karye*) dönüşüm süreçleri.
+2. **İskân, Şenlendirme ve Sürgün Hükümleri (`A.{DVNSMHM.d`, `C..DH..`, `HAT`):** 1691–1730 aşiret iskân fermanları (Rakka, Halep, Bozok, Çukurova, Orta ve Batı Anadolu iskânları), Celâlî dağılmaları sonrası köylerin yeniden şenlendirilmesi ve iç göç hareketleri.
+3. **Kanıt Disiplini:** Hane kaydıyla doğrudan belgelenen soy bağı (`[KESİN KANIT]` / `[GÜÇLÜ EŞLEŞME]`) ile sancağın/nahiyenin genel boy, aşiret veya kavim yerleşim tarihini (`[BÖLGESEL GÖÇ & CEMAAT BAĞLAMI]`) raporda daima ayrı başlık altında sunun; belgede cemaat/taife adı açıkça yazmıyorsa varsayımsal boy ataması yapmayın.
 
 ### B. Osmanlı Arşivi (`BOA`) — Belge Fonları (Köy Tarihi, Göç ve Olaylar)
 

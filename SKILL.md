@@ -21,32 +21,42 @@ Bu beceri, **Said Sürücü**'nün seminerinden hareketle geliştirilmiş olup; 
 - **Balkanlar, Adalar, Girit ve Kafkasya Göçmen/Mübadil Rehberi:** [gocmen-ve-mubadil-rehberi.md](./references/gocmen-ve-mubadil-rehberi.md)
 - **Tarayıcı İçi Güvenli Arama ve Varak Ayırma Yardımcıları:** [dab_helpers.js](./scripts/dab_helpers.js)
 - **İndirilen `.zip / .jpg` Belgelerden 1:1 Piksel Kesiti Alma Aracı:** [crop_and_verify.py](./scripts/crop_and_verify.py)
+- **3 Yönlü Hicrî ↔ Rûmî ↔ Milâdî Tarih Çevirici:** [tarih_cevirici.py](./scripts/tarih_cevirici.py)
 - **Kullanıcılar İçin Hazır Şablon İstemler:** [ornek-kullanim-promptlari.md](./examples/ornek-kullanim-promptlari.md)
 
 ---
 
-## Güvenlik, Mahremiyet ve Hız Sınırı Kuralları (Zorunlu)
+## Güvenlik, Mahremiyet, Yerleşik Tarayıcı Yasağı ve Hız Sınırı Kuralları (Zorunlu)
 
-1. **Şifre ve Kimlik Gizliliği:** Kullanıcının T.C. Kimlik Numarasını veya e-Devlet şifresini **asla** istemeyin. Kullanıcı `https://katalog.devletarsivleri.gov.tr` adresine kendi Chrome tarayıcısında bizzat giriş yapar.
-2. **Doğrulama / CAPTCHA ve WAF (`HTTP 418`) Kuralı:**
+1. **Şifre ve Kimlik Gizliliği:** Kullanıcının T.C. Kimlik Numarasını veya e-Devlet şifresini **asla** istemeyin. Kullanıcı `https://katalog.devletarsivleri.gov.tr` adresine kendi normal Google Chrome tarayıcısında bizzat giriş yapar.
+2. **Antigravity Yerleşik Tarayıcısı (`browser` Alt-Ajanı) Yasağı — `"Web Sayfasına Erişim Engellendi"` Çözümü:**
+   - `katalog.devletarsivleri.gov.tr` veya `turkiye.gov.tr` adreslerini **ASLA** Antigravity'nin kendi dahili tarayıcısında (`browser` subagent / yerleşik webview) açmayın! Kurum güvenlik duvarı yerleşik tarayıcıyı *"(!) Web Sayfasına Erişim Engellendi"* uyarısıyla engeller.
+   - Yalnızca **`chrome-devtools` MCP** üzerinden kullanıcının bilgisayarındaki **normal Google Chrome** oturumuna bağlanın.
+   - Kullanıcı *"Web Sayfasına Erişim Engellendi"* ekranıyla karşılaşırsa veya Antigravity içi tarayıcı açılmışsa şu 3 adımı anlaşılır dille tarif edin:
+     1. Antigravity'nin sağ panelindeki dahili tarayıcı sekmesini kapatın.
+     2. Bilgisayarınızdaki **normal Google Chrome** uygulamasını açın; yeni sekmede `chrome://inspect/#remote-debugging` adresine gidip **Enable remote debugging** kutucuğunu işaretleyin ve Devlet Arşivleri'ne normal Chrome üzerinden e-Devlet ile girin.
+     3. Sohbette *"Kendi tarayıcını açma, Chrome DevTools MCP ile açık Google Chrome sekmeme bağlan"* diyerek devam edin (veya MCP kurmadan doğrudan normal Chrome'dan indirdiğiniz `.zip / .jpg` dosyalarını proje klasörüne koyup **Mod B** ile okutun).
+3. **Doğrulama / CAPTCHA ve WAF (`HTTP 418`) Kuralı:**
    - e-Devlet giriş ekranı, oturum zaman aşımı veya herhangi bir doğrulama/CAPTCHA ekranıyla karşılaşıldığında **derhal durun** ve işlemi tarayıcıda kullanıcının tamamlamasını isteyin.
    - `BelgeGoster.aspx` görüntü sunucusuna **asla paralel (`Promise.all`) çoklu istek göndermeyin**; paralel istekler güvenlik duvarını (`HTTP 418 — Erişim Engellendi`) tetikler. Yalnızca sıralı ve en az `1800 ms` aralıklı istek kullanın; `HTTP 418` alınırsa otomatik görüntü çekimini derhal durdurup kullanıcıya tam defter ve poz (`Mi`) numaralarını verin.
-3. **Sıfır Uydurma ve 1:1 Kesit Disiplini:** Osmanlıca el yazmasında okunamayan veya filigran altında kalan harfleri **asla tahminle tamamlamayın**; `[şüpheli okuma / filigran altında: ...]` olarak işaretleyin. Her kritik hane ve isim satırını [crop_and_verify.py](./scripts/crop_and_verify.py) veya `<canvas>` ile **1:1 piksel kesiti** alarak doğrulayın.
+4. **Sıfır Uydurma ve 1:1 Kesit Disiplini:** Osmanlıca el yazmasında okunamayan veya filigran altında kalan harfleri **asla tahminle tamamlamayın**; `[şüpheli okuma / filigran altında: ...]` olarak işaretleyin. Her kritik hane ve isim satırını [crop_and_verify.py](./scripts/crop_and_verify.py) veya `<canvas>` ile **1:1 piksel kesiti** alarak doğrulayın.
 
 ---
 
 ## Çalışma Modları
 
-Kullanıcının elindeki veriye göre iki moddan uygun olanı (veya ikisini birlikte) çalıştırın:
+Kullanıcının elindeki veriye göre uygun modu (veya birleşimini) çalıştırın:
 
-- **Mod A — Canlı Katalog ve Fihrist Keşfi (`Chrome DevTools MCP`):** Kullanıcının açık Chrome oturumunda fon/defter araması yapar, fihrist (`Mi=1..5`) sayfalarını okuyarak doğru defteri ve tam varak/poz aralığını tespit eder (kullanıcının yanlış defteri toptan satın almasını önler).
-- **Mod B — İndirilmiş Filigransız `.zip / .jpg` Klasöründen 1:1 Paleografik Okuma:** Kullanıcının e-Satış sepetinden indirip çalışma klasörüne koyduğu yüksek çözünürlüklü (`.zip` veya `.jpg`) defter sayfalarını [crop_and_verify.py](./scripts/crop_and_verify.py) ile sağ/sol varak ve 1:1 satır kesitlerine ayırarak sıfır filigran hatasıyla okur.
+- **Mod A — Canlı Katalog ve Fihrist Keşfi (`Chrome DevTools MCP`):** Kullanıcının açık normal Google Chrome oturumunda fon/defter araması yapar, fihrist (`Mi=1..5`) sayfalarını okuyarak doğru defteri ve tam varak/poz aralığını tespit eder (kullanıcının yanlış defteri toptan satın almasını önler).
+- **Mod B — İndirilmiş Filigransız `.zip / .jpg` Klasöründen 1:1 Paleografik Okuma (MCP Gerektirmez):** Kullanıcının normal Chrome üzerinden e-Satış sepetinden indirip proje klasörüne koyduğu yüksek çözünürlüklü (`.zip` veya `.jpg`) defter sayfalarını [crop_and_verify.py](./scripts/crop_and_verify.py) ile sağ/sol varak ve 1:1 satır kesitlerine ayırarak sıfır filigran hatasıyla okur.
+- **Mod C — Çok Sayfalı Defterlerde Paralel Alt-Ajan (`Subagents`) + Ortak Sözlük (`glossary.md`) Orkestrasyonu:** 20–100+ sayfalık büyük defter/evrak serilerinde sayfaları 10'arlı gruplar halinde paralel alt-ajanlara dağıtır; tüm ajanların ortak okuduğu bir `glossary.md` (köy lakapları, şahıs ve yer adı imlâları) dosyası tutar ve işlem sonunda bir **Tutarlılık Denetçisi Ajan** çalıştırarak tüm sayfalar arasında isim, yaş ve kuşak bütünlüğünü doğrular (ayrıntılı yazma eser tercümesi için kardeş beceri `yazma-eser-paralel-tercume` ile uyumludur).
 
 ---
 
-## Adım 0: Araç ve Oturum Hazırlığı (Mod A İçin)
+## Adım 0: Proje Klasörü ve Oturum Hazırlığı
 
-1. `chrome-devtools` MCP sunucusu etkin değilse resmi `chrome-devtools-mcp` kurulumunu önerin:
+1. **Özel Proje Klasörü (`Workspace`) Düzeni:** Kullanıcı henüz bir çalışma klasörü açmadıysa masaüstünde/belgelerinde müstakil bir klasör (ör. `Soy_Kutugu_Arastirmam`) oluşturup Antigravity'de **Open Folder** ile açmasını önerin. İndirilen kaynak belgeleri, `kesitler/` alt klasöründeki 1:1 kanıt görsellerini ve üretilen `.md / .html / .docx` raporlarını düzenli olarak bu proje klasörüne kaydedin.
+2. `chrome-devtools` MCP sunucusu etkin değilse (Mod A için) resmi `chrome-devtools-mcp` kurulumunu önerin:
    - Gereksinimler: Google Chrome (`https://www.google.com/chrome/`) ve Node.js LTS (`https://nodejs.org`).
    - `mcp_config.json` tanımı:
      ```json
@@ -59,21 +69,21 @@ Kullanıcının elindeki veriye göre iki moddan uygun olanı (veya ikisini birl
        }
      }
      ```
-2. Kullanıcıdan Chrome'da `chrome://inspect/#remote-debugging` sayfasından **Enable remote debugging** kutusunu işaretlemesini ve yeni sekmede `https://katalog.devletarsivleri.gov.tr/Sayfalar/Arama/Arama.aspx` adresine e-Devlet ile giriş yapmasını isteyin.
-3. `<appDataDir>/mcp/chrome-devtools/` altındaki şema dosyalarını (`list_pages.json`, `evaluate_script.json`, `navigate_page.json`) okuyun ve `list_pages` ile katalog sekmesinin `pageId` değerini alın.
+3. Kullanıcıdan **normal Google Chrome**'da `chrome://inspect/#remote-debugging` sayfasından **Enable remote debugging** kutusunu işaretlemesini ve yeni sekmede `https://katalog.devletarsivleri.gov.tr/Sayfalar/Arama/Arama.aspx` adresine e-Devlet ile giriş yapmasını isteyin.
+4. `<appDataDir>/mcp/chrome-devtools/` altındaki şema dosyalarını (`list_pages.json`, `evaluate_script.json`, `navigate_page.json`) okuyun ve `list_pages` ile katalog sekmesinin `pageId` değerini alın.
    - *Teknik İpucu:* Büyük arşiv sayfalarında `take_screenshot` (`fullPage: true`) zaman aşımına uğrayabileceğinden, görüntü aktarımında `dab_helpers.js` içindeki `<canvas>` `toDataURL('image/jpeg', 0.88)` çıktısını tercih edin.
 
 ---
 
 ## Adım 1: "Kütük Duvarı" Analizi ve 4 Temel İpucunun Çıkarılması
 
-Kullanıcının `https://www.turkiye.gov.tr/nvi-alt-ust-soy-bilgisi-sorgulama` adresinden indirdiği belgeden **Baba Tarafı** ve **Anne Tarafı** için ayrı ayrı **4 Temel İpucunu** çıkarın:
+Kullanıcının `https://www.turkiye.gov.tr/nvi-alt-ust-soy-bilgisi-sorgulama` adresinden indirdiği belgeden **veya İl/İlçe Nüfus Müdürlüğü'nden temin ettiği vukuatlı nüfus kayıt örneği / eski esas kütük bilgisinden** **Baba Tarafı** ve **Anne Tarafı** için ayrı ayrı **4 Temel İpucunu** çıkarın:
 
 1. **Köy / Mahallenin Eski Adı:** Cumhuriyet döneminde değişmişse 1928 *Son Teşkilât-ı Mülkiyede Köylerimizin Adları* ve yerel kaynaklardan Osmanlıca adını ve tüm fonetik varyantlarını (`k/g/ğ`, `t/d`, `b/p`, `c/ç`, ünlü düşmesi) üretin (ör. *Güzelyurt ← Gelveri*, *Yeşilköy ← Ayastefanos*).
-2. **1934 Öncesi Sülale Lakapları ve Oymak Adları:** `...oğulları`, `...zâde`, `...uşağı`, `...gil`, meslek unvanları (*Demircioğlu, Hacıalioğlu, Molla...*) veya dul annenin adından türeyen lakaplar. Kadın atalarda soyadının babadan değil eşin hanesinden gelebileceğini dikkate alın.
+2. **1934 Öncesi Sülale Lakapları ve Oymak Adları (En Güçlü Anahtar):** `...oğulları`, `...zâde`, `...uşağı`, `...gil`, meslek unvanları (*Demircioğlu, Hacıalioğlu, Molla...*) veya dul annenin adından türeyen lakaplar. Aile lakabı biliniyorsa nüfus ve temettuat defterlerinde hane tespiti çok hızlanır. Kadın atalarda soyadının babadan değil eşin hanesinden gelebileceğini dikkate alın.
 3. **Kütükteki En Eski Atalar ve Doğum Tarihleri:**
    - Nüfus esas kütükleri bazı sancaklarda **1881–1883 (`R. 1297–1299`)**, bazılarında **1904–1905 (`R. 1320`)**, yangın/işgal gören yerlerde ise daha geç başlar. İlk sayımdan önce vefat eden büyük dedeler ayrı satır olarak açılmaz; yalnızca çocuğunun **"Baba Adı"** hanesinde görünür.
-   - Bu en eski atanın doğum yılından Milâdî → Hicrî/Rûmî dönüşüm yaparak 1831–1848 nüfus ve 1844–1845 temettuat defterlerindeki beklenen yaşını hesaplayın.
+   - Bu en eski atanın doğum yılından [tarih_cevirici.py](./scripts/tarih_cevirici.py) ile Milâdî → Hicrî/Rûmî dönüşüm yaparak 1831–1848 nüfus ve 1844–1845 temettuat defterlerindeki beklenen yaşını hesaplayın.
 4. **Osmanlı İdari Zinciri (`Eyâlet/Vilâyet → Sancak/Livâ → Kazâ → Nâhiye`):**
    - Bugün X ilçesine bağlı bir köy, 19. yüzyılda komşu bir **nahiye veya kazaya** bağlı olabilir. Çevredeki tüm komşu kaza ve nahiyeleri arama havuzuna ekleyin.
    - Aile Balkanlar, Adalar veya Kafkasya göçmeni/mübadili ise doğrudan [gocmen-ve-mubadil-rehberi.md](./references/gocmen-ve-mubadil-rehberi.md) iş akışını devreye sokun (`https://www.turkiye.gov.tr/nvi-isim-denklik-belgesi-talep-ve-sorgulama`, `BCA 130-16-13-2`, `DH.SN..THR.`).
@@ -84,12 +94,12 @@ Kullanıcının `https://www.turkiye.gov.tr/nvi-alt-ust-soy-bilgisi-sorgulama` a
 
 Arşivde günümüzden 1500'lere doğru şu **6 basamaklı merdiveni** izleyin:
 
-1. **1881–1905 (`Sicill-i Nüfus Atîk/Esas Kütükleri`):** e-Devlet soy ağacının dayandığı başlangıç katmanı.
-2. **1830–1880 (`BOA, NFS.d..` & `D..CRD.d...` — Nüfus ve Yoklama Defterleri):** Köydeki tüm erkekleri hane hane, baba adıyla (`bin / veled-i`), yaşıyla (`sinn`), boy ve sakal/bıyık eşkâliyle, doğum (`tevellüd`), ölüm (`fevt`) ve askerlik (`reft be-askeriyye`, `redîf`) şerhleriyle kaydeder. *(Balkan sancaklarının 1830–1875 `NFS.d` defterleri de bu fondadır!)*
+1. **1881–1905 (`Sicill-i Nüfus Atîk/Esas Kütükleri` & Nüfus Müdürlüğü Kayıtları):** e-Devlet soy ağacının ve Nüfus Müdürlüğü kayıtlarının dayandığı başlangıç katmanı.
+2. **1830–1880 (`BOA, NFS.d..` & `D..CRD.d...` — Nüfus ve Yoklama Defterleri):** Köydeki tüm erkekleri hane hane, baba adıyla (`bin / veled-i`), sülale lakabıyla, yaşıyla (`sinn`), boy ve sakal/bıyık eşkâliyle, doğum (`tevellüd`), ölüm (`fevt`) ve askerlik (`reft be-askeriyye`, `redîf`) şerhleriyle kaydeder. *(Balkan sancaklarının 1830–1875 `NFS.d` defterleri de bu fondadır!)*
 3. **1844–1845 (`BOA, ML.VRD.TMT.d...` — Temettuat Defterleri) & 1835–1838 (`A.{RSK.d...` — İmam-Muhtar Defterleri):** Hane reisinin mesleğini, tarla dönümünü, hayvanlarını, yıllık gelirini ve köyün ilk muhtar/imamlarını verir.
-4. **1500–1924 (`BOA, MŞH.ŞSC.d` / `kadisicilleri.org` — Şer'iyye Sicilleri & `EV.d` Vakıf Kayıtları):** Vefat eden atanın **tereke (miras)** kaydından eşini, kızları dâhil tüm çocuklarını ve mal dökümünü verir.
-5. **1600–1750 (`BOA, MAD.d..` & `A.{DVNSMHM.d...` — Avârız, Mukataa ve Mühimme Defterleri):** Celâlî sonrası (ör. 1642) vergi hanelerini, aşiret/cemaat iskânlarını ve padişah fermanlarını içerir.
-6. **1450–1600 (`BOA, TT.d...` & `TK.GM.d...` — Tapu Tahrir Defterleri):** Köyün en eski Osmanlı kaydını, vergi mükellefi erkeklerin baba adlarıyla tam listesini ve tımar/vakıf hasılatını verir.
+4. **1500–1924 (`BOA, MŞH.ŞSC.d` / `kadisicilleri.org` — Şer'iyye Sicilleri & `EV.d` Vakıf Kayıtları):** Bağlı olunan kazanın kadı mahkemesi sicillerindeki vefat/miras (**tereke**), nikâh, vasiyet ve arazi hüccetlerinden eşini, kızları dâhil tüm çocuklarını ve mal dökümünü verir.
+5. **1600–1850 (`BOA, MAD.d..`, `D..BŞM.CZY.d`, `ML.VRD.CMH.d` & `A.{DVNSMHM.d...` — Avârız, Cizye, Mukataa ve Mühimme Defterleri):** Ayrıntılı *Avârız* hane sayımlarını (ör. 1642), gayrimüslim/mühtedi veya karma yerleşimler için *Cizye* defterlerini, aşiret/cemaat vergi listelerini ve padişah fermanlarını içerir.
+6. **1450–1600 (`BOA, TT.d...` & `TK.GM.d...` — Tapu Tahrir Defterleri + Bölgesel Göç ve Boy/Cemaat Analizi):** Köyün en eski Osmanlı mufassal kaydını ve vergi mükellefi erkeklerin baba adlarıyla tam listesini verir. Bu aşamada **o bölgeye yapılan tarihsel göç ve iskân hareketlerini** (*konar-göçer Yörükân / Türkmen / Ekrâd / Tatar cemaat tahrirleri, sürgün ve şenlendirme kayıtları*) dikkatle inceleyerek bölgede yer alan potansiyel boy, oymak ve kavimleri belgesel kaynaklarıyla ele alın *(doğrudan hane kaydı ile bölgesel/etnik-tarihsel bağlamı birbirine karıştırmadan ayrı başlık ve kanıt seviyesiyle sunun)*.
 
 ### Bütçe ve Zaman Koruyan "Önce Fihrist" Kuralı (Zorunlu)
 - Katalogda arama ücretsizdir; ancak e-Satış üzerinden filigransız yüksek çözünürlüklü her poz ücretlidir. 300–500 sayfalık bir defteri kontrolsüzce sepete ekletmeyin!
