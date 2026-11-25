@@ -3,9 +3,7 @@ title: Devlet Arşivleri Soy Kütüğü & Köy Tarihi AI Skill
 emoji: 📜
 colorFrom: yellow
 colorTo: blue
-sdk: gradio
-sdk_version: 5.23.0
-app_file: app.py
+sdk: static
 pinned: true
 license: mit
 short_description: 1500'lere kadar 1:1 kanıtlı Osmanlı soy kütüğü ve arşiv aracı
@@ -15,6 +13,7 @@ short_description: 1500'lere kadar 1:1 kanıtlı Osmanlı soy kütüğü ve arş
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Bir%20Kahve%20Ismarla-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/shnfatih8)
 [![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-Projeye%20Destek%20Ol-ea4aaa?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/shnfatih-hash)
+[![Hugging Face Space](https://img.shields.io/badge/🤗%20Hugging%20Face-Canlı%20Web%20Aracı-FFD21E?style=for-the-badge)](https://huggingface.co/spaces/sahanfatih/devlet-arsivleri-soykutugu)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-shnfatih--hash%2Fdevlet--arsivleri--soykutugu-181717?style=for-the-badge&logo=github)](https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu)
 
 > **e-Devlet Alt-Üst Soy Bilgisi** belgeniz belli bir tarihte kesiliyor mu?  

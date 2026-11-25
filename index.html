@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devlet Arşivleri Soy Kütüğü &amp; Köy Tarihi AI Skill</title>
+<style>
+  :root {
+    --bg: #f7f4ec; --card: #ffffff; --ink: #1d242b; --muted: #5a6570;
+    --navy: #1b2838; --gold: #ffdd00; --gold-dark: #8a6200; --pink: #ea4aaa;
+    --accent: #1d4e89; --border: #dfd7c6;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+  .hero { background: linear-gradient(135deg, #1b2838 0%, #2b3e50 100%); color: #fff; padding: 24px 20px; border-bottom: 4px solid var(--gold); }
+  .wrap { max-width: 1120px; margin: 0 auto; }
+  .hero-flex { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
+  .hero h1 { margin: 0 0 6px; font-size: 1.5rem; }
+  .hero p { margin: 0; opacity: 0.92; font-size: 0.95rem; max-width: 650px; }
+  .btn-group { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .btn-bmc { background: var(--gold); color: #111; font-weight: 700; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-size: 0.92rem; box-shadow: 0 2px 8px rgba(0,0,0,0.22); }
+  .btn-sp { background: var(--pink); color: #fff; font-weight: 700; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-size: 0.92rem; }
+  .btn-gh { background: #24292f; color: #fff; font-weight: 600; padding: 10px 14px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; border: 1px solid #57606a; }
+  main.wrap { padding: 18px 16px 36px; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .tab-btn { border: 1px solid var(--border); background: #fdfbf7; color: var(--ink); padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.92rem; }
+  .tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+  .alert-warn { background: #fff8e6; border-left: 4px solid #d97706; padding: 14px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 0.93rem; }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  label { display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 5px; color: #2d3748; }
+  input[type="text"], input[type="number"], select, textarea {
+    width: 100%; padding: 9px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.94rem; font-family: inherit;
+  }
+  textarea { font-family: Consolas, Monaco, monospace; font-size: 0.88rem; line-height: 1.5; }
+  .action-btn { background: var(--accent); color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 0.94rem; margin-top: 10px; }
+  .action-btn.secondary { background: #2d6a4f; }
+  .result-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-top: 12px; }
+  canvas { max-width: 100%; border: 1px solid var(--border); border-radius: 8px; background: #eee; }
+  pre.cmd { background: #1e293b; color: #f8fafc; padding: 12px 14px; border-radius: 8px; overflow-x: auto; font-size: 0.86rem; }
+  footer { text-align: center; padding: 18px; background: #fdfbf7; border-top: 1px solid var(--border); font-size: 0.92rem; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-flex">
+    <div>
+      <h1>📜 Devlet Arşivleri Soy Kütüğü ve Köy Tarihi AI Skill</h1>
+      <p>e-Devlet / Nüfus Müdürlüğü kaydından 1500'lü yıllara kadar 1:1 piksel kesitli Osmanlı arşiv araştırma aracı ve açık kaynaklı yapay zekâ becerisi.</p>
+    </div>
+    <div class="btn-group">
+      <a class="btn-bmc" href="https://buymeacoffee.com/shnfatih8" target="_blank" rel="noopener">☕ Bir Kahve Ismarla (Buy Me a Coffee)</a>
+      <a class="btn-sp" href="https://github.com/sponsors/shnfatih-hash" target="_blank" rel="noopener">💖 GitHub Sponsors</a>
+      <a class="btn-gh" href="https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu" target="_blank" rel="noopener">⭐ GitHub &amp; Dosyalar</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="openTab('p-prompt', this)">✍️ Kişisel Prompt Üretici &amp; Hata Çözümü</button>
+    <button class="tab-btn" onclick="openTab('p-date', this)">🗓️ Osmanlıca Tarih &amp; Kuşak Yaşı</button>
+    <button class="tab-btn" onclick="openTab('p-folio', this)">🔍 Sağ/Sol Varak &amp; 1:1 Piksel Kesiti</button>
+    <button class="tab-btn" onclick="openTab('p-install', this)">📦 Tek Komutla Kurulum &amp; Kardeş Projeler</button>
+  </div>
+
+  <section id="p-prompt" class="panel active">
+    <div class="alert-warn">
+      <strong>⚠️ "Web Sayfasına Erişim Engellendi" Ekranı Çözümü:</strong> Antigravity'nin sağ paneldeki <em>kendi yerleşik tarayıcısı</em> Devlet Arşivleri güvenlik duvarı tarafından engellenir. Yerleşik tarayıcıyı kapatın; bilgisayarınızdaki <strong>normal Google Chrome</strong>'da <code>chrome://inspect/#remote-debugging</code> kutusunu işaretleyip Devlet Arşivleri'ne normal Chrome üzerinden e-Devlet ile giriş yapın.
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">Google Antigravity / Claude İçin Hazır Araştırma İstemi Üretin</h3>
+      <div class="grid-3">
+        <div><label>İl / İlçe</label><input id="in-il" type="text" placeholder="Örn: Konya / Bozkır"></div>
+        <div><label>Bugünkü Köy / Mahalle</label><input id="in-koy" type="text" placeholder="Örn: Hisarlık"></div>
+        <div><label>Biliniyorsa Eski Köy Adı</label><input id="in-eski" type="text" placeholder="İsteğe bağlı"></div>
+      </div>
+      <div class="grid-2" style="margin-top:12px;">
+        <div><label>Bilinen Aile / Sülale Lakabı</label><input id="in-lakap" type="text" placeholder="Örn: Hacıalioğulları, Mollagil..."></div>
+        <div>
+          <label>Aile Köken / Göç Durumu</label>
+          <select id="in-koken">
+            <option value="Anadolu Yerleşik / Konar-Göçer Kök">Anadolu Yerleşik / Konar-Göçer Kök</option>
+            <option value="1923–1925 Lozan Mübadili">1923–1925 Lozan Mübadili (Selanik, Drama, Girit, Kavala vb.)</option>
+            <option value="93 Harbi / Balkan / Kafkasya Muhaciri">93 Harbi / Balkan / Kafkasya / Kırım Göçmeni (Muhacir)</option>
+          </select>
+        </div>
+      </div>
+      <button class="action-btn" onclick="buildPrompt()">🚀 Prompt Oluştur</button>
+      <button class="action-btn secondary" onclick="copyPrompt()">📋 Kopyala</button>
+      <span id="copy-msg" style="margin-left:10px; font-weight:600; color:#2d6a4f;"></span>
+      <textarea id="out-prompt" rows="13" style="margin-top:12px;"></textarea>
+    </div>
+  </section>
+
+  <section id="p-date" class="panel">
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="margin-top:0;">3 Yönlü Hicrî ↔ Rûmî ↔ Milâdî Tarih Çevirici</h3>
+        <label>Kaynak Takvim</label>
+        <select id="cal-type" style="margin-bottom:10px;">
+          <option value="hicri">Hicrî Kamerî → Milâdî &amp; Rûmî</option>
+          <option value="rumi">Rûmî Malî → Milâdî &amp; Hicrî</option>
+          <option value="miladi">Milâdî → Hicrî &amp; Rûmî</option>
+        </select>
+        <div class="grid-3">
+          <div><label>Gün (1–31 / gurre)</label><input id="cal-day" type="text" value="10"></div>
+          <div><label>Ay (1–12 veya M,S,Ra,R,Ca,C,B,Ş,N,L,Za,Z)</label><input id="cal-mon" type="text" value="C"></div>
+          <div><label>Yıl</label><input id="cal-yr" type="number" value="1261"></div>
+        </div>
+        <button class="action-btn" onclick="convertCal()">Tarihi Çevir</button>
+        <div id="cal-out" class="result-box"></div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0;">+ΔYıl Çapraz Sayım Kuşak Yaşı Hesaplayıcı</h3>
+        <p style="font-size:0.9rem; color:var(--muted);">Atanızın Milâdî doğum yılını girin; 1831–1905 Osmanlı sayımlarında kaç yaşında (<code>sinn</code>) yazılmış olması gerektiğini görün.</p>
+        <label>Atanın Milâdî Doğum Yılı</label>
+        <input id="birth-yr" type="number" value="1827">
+        <button class="action-btn" onclick="calcAges()">Beklenen Yaşları Hesapla</button>
+        <div id="age-out" class="result-box"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="p-folio" class="panel">
+    <div class="card">
+      <h3 style="margin-top:0;">Tarayıcı İçi Sağ/Sol Varak Ayırma ve 1:1 Piksel Kanıt Kesiti (%100 Gizli)</h3>
+      <p style="font-size:0.9rem; color:var(--muted);">Yüklediğiniz arşiv görüntüsü hiçbir sunucuya gönderilmez; doğrudan tarayıcınızda işlenir.</p>
+      <input type="file" id="img-input" accept="image/*" onchange="loadFolioImage(event)">
+      <div class="grid-3" style="margin-top:12px;">
+        <div><label>Sol Sınır (x1 %): <span id="vx1">52</span>%</label><input type="range" id="sx1" min="0" max="95" value="52" oninput="updateCrop()"></div>
+        <div><label>Üst Sınır (y1 %): <span id="vy1">10</span>%</label><input type="range" id="sy1" min="0" max="95" value="10" oninput="updateCrop()"></div>
+        <div><label>Genişlik / Yükseklik (%): <span id="vwh">40x22</span>%</label>
+          <input type="range" id="sw" min="5" max="90" value="40" oninput="updateCrop()">
+          <input type="range" id="sh" min="5" max="70" value="22" oninput="updateCrop()">
+        </div>
+      </div>
+      <div style="margin-top:10px;">
+        <label style="display:inline;">Piksel Keskin Yakınlaştırma: </label>
+        <select id="szoom" style="width:120px; display:inline-block;" onchange="updateCrop()">
+          <option value="1">1x (1:1 Doğal)</option>
+          <option value="2" selected>2x (Piksel Keskin)</option>
+          <option value="3">3x (Harf Noktası)</option>
+        </select>
+        <button class="action-btn secondary" style="margin-left:10px;" onclick="downloadCrop()">💾 1:1 Kesiti PNG İndir</button>
+      </div>
+      <div style="margin-top:14px;">
+        <label>1:1 Piksel Kanıt Kesiti</label>
+        <canvas id="cv-crop" width="600" height="180"></canvas>
+      </div>
+      <div class="grid-2" style="margin-top:14px;">
+        <div><label>Sağ Varak (Önce Okunur — vr. a)</label><canvas id="cv-right" width="420" height="540"></canvas></div>
+        <div><label>Sol Varak (Sonra Okunur — vr. b)</label><canvas id="cv-left" width="420" height="540"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="p-install" class="panel">
+    <div class="card">
+      <h3 style="margin-top:0;">Google Antigravity &amp; Claude Code Tek Komutla Kurulum</h3>
+      <p><strong>Windows (PowerShell):</strong></p>
+      <pre class="cmd">git clone https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu.git "$HOME\.gemini\config\skills\devlet-arsivleri-soykutugu"
+pip install Pillow</pre>
+      <p><strong>macOS / Linux:</strong></p>
+      <pre class="cmd">git clone https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu.git ~/.gemini/config/skills/devlet-arsivleri-soykutugu
+pip install Pillow</pre>
+      <p>📦 Doğrudan ZIP İndirme: <a href="./devlet-arsivleri-soykutugu.zip" download><strong>devlet-arsivleri-soykutugu.zip</strong></a></p>
+      <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
+      <h3>Kardeş Açık Kaynak Projelerimiz</h3>
+      <ul>
+        <li>🖋️ <strong><a href="https://huggingface.co/spaces/sahanfatih/osmanlica-resmi-evrak" target="_blank">osmanlica-resmi-evrak</a>:</strong> Ferman, Berat, İrade, Hüccet ve Tahriratları TDV İA/TTK transkripsiyon sistemi ve İnteraktif HTML çalışma kartıyla okuma becerisi.</li>
+        <li>📖 <strong><a href="https://huggingface.co/spaces/sahanfatih/yazma-eser-paralel-tercume" target="_blank">yazma-eser-paralel-tercume</a>:</strong> 100+ sayfalık Arapça/Osmanlıca/Farsça el yazmalarını 10 paralel alt-ajan ve ortak <code>glossary.md</code> sözlüğüyle tercüme becerisi.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>Projeyi faydalı buldunuz mu?</strong> Açık kaynaklı Osmanlı arşivi ve dijital beşerî bilimler AI araçlarının gelişimine gönüllü destek olmak için:
+  <a href="https://buymeacoffee.com/shnfatih8" target="_blank" rel="noopener" style="font-weight:700; color:#8a6200; margin-left:6px;">☕ Buy Me a Coffee (shnfatih8)</a> •
+  <a href="https://github.com/sponsors/shnfatih-hash" target="_blank" rel="noopener" style="font-weight:700; color:#b82578; margin-left:6px;">💖 GitHub Sponsors</a>
+</footer>
+
+<script>
+function openTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function buildPrompt() {
+  const il = document.getElementById('in-il').value.trim() || '[İl / İlçe]';
+  const koy = document.getElementById('in-koy').value.trim() || '[Köy / Mahalle]';
+  const eski = document.getElementById('in-eski').value.trim();
+  const lakap = document.getElementById('in-lakap').value.trim() || 'Defterlerden tespit edilsin';
+  const koken = document.getElementById('in-koken').value;
+  const gocEk = koken.includes('Anadolu') ? '' : '\n- Ailemiz göçmen/mübadil kökenli olduğundan Cumhuriyet Arşivi `130-16-13-2` (Tasfiye Talepnameleri), `272` (Toprak İskân) ve Osmanlı Arşivi `DH.SN..THR.` fonlarıyla birlikte geldikleri yerleşimin 1830–1875 `NFS.d` nüfus defterlerini de tara.';
+  document.getElementById('out-prompt').value =
+`Sana e-Devlet "Alt-Üst Soy Bilgisi" belgemi (veya Nüfus Müdürlüğü kayıt örneğimi) bu proje klasöründe verdim; normal Google Chrome'da https://katalog.devletarsivleri.gov.tr oturumum açık.
+
+- Araştırılacak Yerleşim: ${il} — ${koy}${eski ? ' (eski adı: ' + eski + ')' : ''}
+- Bilinen Sülale Lakabı: ${lakap}
+- Köken Durumu: ${koken}
+
+ÖNEMLİ KURAL: Antigravity'nin kendi dahili tarayıcısını ASLA açma ("Web Sayfasına Erişim Engellendi" hatası verir); doğrudan chrome-devtools MCP ile bilgisayarımda açık olan normal Google Chrome sekmeme bağlan ve ürettiğin tüm 1:1 kesitleri ve raporları bu proje klasörüne kaydet.
+
+Lütfen devlet-arsivleri-soykutugu becerisini kullanarak:
+1. En eski atalarımı, doğum yıllarının Hicrî/Rûmî karşılıklarını ve köyümüzün eski Osmanlıca adını ve Sancak/Kaza/Nahiye zincirini çıkar.
+2. NFS.d (Nüfus), ML.VRD.TMT.d (Temettuat), MŞH.ŞSC.d (Şer'iyye Sicilleri / Tereke), MAD.d & D..BŞM.CZY.d (Avârız ve Cizye) ve TT.d / TK.GM.d (15.–16. yy. Tapu Tahrir + bölgesel göç ve boy/cemaat kayıtları) fonlarında önce Fihrist (Mi=1..5) kontrolü yaparak doğru defter ve poz (Mi) aralıklarını tespit et.${gocEk}
+3. Tahmin yürütmeden, her kritik hane satırını 1:1 piksel kesitiyle doğrulayarak bulguları [KESİN KANIT], [GÜÇLÜ EŞLEŞME], [İSİM İZİ] ve [BÖLGESEL GÖÇ & CEMAAT BAĞLAMI] seviyeleriyle raporla.`;
+}
+
+function copyPrompt() {
+  const el = document.getElementById('out-prompt');
+  el.select();
+  navigator.clipboard.writeText(el.value);
+  document.getElementById('copy-msg').textContent = '✓ Kopyalandı!';
+  setTimeout(() => document.getElementById('copy-msg').textContent = '', 2500);
+}
+
+const H_NAMES = ["","Muharrem","Safer","Rebîülevvel","Rebîülâhir","Cemâziyelevvel","Cemâziyelâhir","Receb","Şa‘bân","Ramazân","Şevvâl","Zilkade","Zilhicce"];
+const H_MAP = {m:1,muharrem:1,"1":1,s:2,safer:2,"2":2,ra:3,rebiulevvel:3,"3":3,r:4,rebiulahir:4,"4":4,ca:5,cemaziyelevvel:5,"5":5,c:6,cemaziyelahir:6,"6":6,b:7,receb:7,recep:7,"7":7,"ş":8,saban:8,"8":8,n:9,ramazan:9,"9":9,l:10,sevval:10,"10":10,za:11,zilkade:11,"11":11,z:12,zilhicce:12,"12":12};
+const R_NAMES = {1:"Kânûn-ı Sânî (Ocak)",2:"Şubat",3:"Mart",4:"Nisan",5:"Mayıs",6:"Haziran",7:"Temmuz",8:"Ağustos",9:"Eylül",10:"Teşrîn-i Evvel (Ekim)",11:"Teşrîn-i Sânî (Kasım)",12:"Kânûn-ı Evvel (Aralık)"};
+const TR_M = ["","Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+
+function hijriToJdn(y,m,d){ return d + Math.floor((295001*(m-1)+9900)/10000) + (y-1)*354 + Math.floor((3+11*y)/30) + 1948439; }
+function jdnToHijri(jdn){
+  let l = jdn - 1948440 + 10632, n = Math.floor((l-1)/10631);
+  l = l - 10631*n + 354;
+  let j = Math.floor((10985-l)/5316)*Math.floor((50*l)/17719) + Math.floor(l/5670)*Math.floor((43*l)/15238);
+  l = l - Math.floor((30-j)/15)*Math.floor((17719*j)/50) - Math.floor(j/16)*Math.floor((15238*j)/43) + 29;
+  let m = Math.floor((24*l)/709), d = l - Math.floor((709*m)/24), y = 30*n + j - 30;
+  return [y,m,d];
+}
+function gregToJdn(y,m,d){ let a=Math.floor((14-m)/12), yy=y+4800-a, mm=m+12*a-3; return d+Math.floor((153*mm+2)/5)+365*yy+Math.floor(yy/4)-Math.floor(yy/100)+Math.floor(yy/400)-32045; }
+function jdnToGreg(jdn){ let a=jdn+32044, b=Math.floor((4*a+3)/146097), c=a-Math.floor((146097*b)/4), d=Math.floor((4*c+3)/1461), e=c-Math.floor((1461*d)/4), m=Math.floor((5*e+2)/153); return [100*b+d-4800+Math.floor(m/10), m+3-12*Math.floor(m/10), e-Math.floor((153*m+2)/5)+1]; }
+function julToJdn(y,m,d){ let a=Math.floor((14-m)/12), yy=y+4800-a, mm=m+12*a-3; return d+Math.floor((153*mm+2)/5)+365*yy+Math.floor(yy/4)-32083; }
+function jdnToJul(jdn){ let c=jdn+32082, d=Math.floor((4*c+3)/1461), e=c-Math.floor((1461*d)/4), m=Math.floor((5*e+2)/153); return [d-4800+Math.floor(m/10), m+3-12*Math.floor(m/10), e-Math.floor((153*m+2)/5)+1]; }
+function jdnToRumi(jdn){
+  const [gy,gm,gd] = jdnToGreg(jdn);
+  if (gy < 1840 || (gy===1840 && (gm<3 || (gm===3 && gd<13)))) return "13 Mart 1840 öncesi (Rûmî takvim henüz yürürlükte değil)";
+  if (gy < 1917 || (gy===1917 && gm<3)) { const [jy,jm,jd] = jdnToJul(jdn); return `R. ${jd} ${R_NAMES[jm]} ${jy - ((jm===1||jm===2)?585:584)}`; }
+  return `R. ${gd} ${R_NAMES[gm]} ${gy-584}`;
+}
+
+function convertCal() {
+  try {
+    const t = document.getElementById('cal-type').value;
+    const rawD = document.getElementById('cal-day').value.trim().toLowerCase();
+    const rawM = document.getElementById('cal-mon').value.trim().toLowerCase();
+    const y = parseInt(document.getElementById('cal-yr').value, 10);
+    let jdn = 0, label = '';
+    if (t === 'hicri') {
+      const m = H_MAP[rawM] || parseInt(rawM,10);
+      const d = rawD === 'gurre' ? 1 : parseInt(rawD,10);
+      jdn = hijriToJdn(y, m, d);
+      label = `H. ${d} ${H_NAMES[m]} ${y}`;
+    } else if (t === 'rumi') {
+      const m = parseInt(rawM,10) || 12, d = parseInt(rawD,10) || 1;
+      jdn = (y < 1333 || (y===1333 && m<=2)) ? julToJdn(y + (m<=2?585:584), m, d) : gregToJdn(y+584, m, d);
+      label = `R. ${d} ${R_NAMES[m]} ${y}`;
+    } else {
+      const m = parseInt(rawM,10) || 1, d = parseInt(rawD,10) || 1;
+      jdn = gregToJdn(y, m, d);
+      label = `${d} ${TR_M[m]} ${y}`;
+    }
+    const [gy,gm,gd] = jdnToGreg(jdn);
+    const [hy,hm,hd] = jdnToHijri(jdn);
+    document.getElementById('cal-out').innerHTML =
+      `<div><strong>Girdi:</strong> ${label}</div>` +
+      `<div><strong>Milâdî:</strong> ${gd} ${TR_M[gm]} ${gy}</div>` +
+      `<div><strong>Hicrî:</strong> H. ${hd} ${H_NAMES[hm]} ${hy}</div>` +
+      `<div><strong>Rûmî:</strong> ${jdnToRumi(jdn)}</div>` +
+      `<div style="margin-top:6px;font-size:0.85rem;"><a href="https://www.ttk.gov.tr/tarih-cevirme-kilavuzu/" target="_blank">TTK Tarih Çevirme Kılavuzu ile Doğrula ↗</a></div>`;
+  } catch (e) {
+    document.getElementById('cal-out').textContent = 'Lütfen geçerli gün, ay ve yıl girin.';
+  }
+}
+
+function calcAges() {
+  const by = parseInt(document.getElementById('birth-yr').value, 10) || 1827;
+  const rows = [
+    [1831, "II. Mahmud İlk Nüfus Sayımı (NFS.d)"],
+    [1840, "Tanzimat Nüfus Yoklama Defteri (NFS.d)"],
+    [1845, "Temettuat ve Genel Nüfus Sayımı (ML.VRD.TMT.d)"],
+    [1882, "Sicill-i Nüfus Atîk Kütüğü (1. Dalga)"],
+    [1905, "Genel Nüfus Tahriri (2. Dalga)"]
+  ].map(([cy, name]) => {
+    const diff = cy - by;
+    return `<li><strong>${cy}</strong> (${name}): ${diff < 0 ? 'Henüz doğmamış (' + Math.abs(diff) + ' yıl sonra)' : '<strong>~' + diff + ' yaşında</strong> (' + Math.max(0,diff-3) + '–' + (diff+3) + ' aralığı)'}</li>`;
+  }).join('');
+  document.getElementById('age-out').innerHTML = `<ul style="margin:0;padding-left:18px;">${rows}</ul>`;
+}
+
+let loadedImg = null;
+function loadFolioImage(ev) {
+  const file = ev.target.files[0];
+  if (!file) return;
+  const img = new Image();
+  img.onload = () => {
+    loadedImg = img;
+    const w = img.width, h = img.height;
+    const cvR = document.getElementById('cv-right'), cvL = document.getElementById('cv-left');
+    const rw = Math.floor(w * 0.53), rx = Math.floor(w * 0.47);
+    cvR.width = rw; cvR.height = h;
+    cvR.getContext('2d').drawImage(img, rx, 0, rw, h, 0, 0, rw, h);
+    cvL.width = rw; cvL.height = h;
+    cvL.getContext('2d').drawImage(img, 0, 0, rw, h, 0, 0, rw, h);
+    updateCrop();
+  };
+  img.src = URL.createObjectURL(file);
+}
+
+function updateCrop() {
+  const x1p = parseInt(document.getElementById('sx1').value, 10);
+  const y1p = parseInt(document.getElementById('sy1').value, 10);
+  const wp = parseInt(document.getElementById('sw').value, 10);
+  const hp = parseInt(document.getElementById('sh').value, 10);
+  const zoom = parseInt(document.getElementById('szoom').value, 10);
+  document.getElementById('vx1').textContent = x1p;
+  document.getElementById('vy1').textContent = y1p;
+  document.getElementById('vwh').textContent = `${wp}x${hp}`;
+  if (!loadedImg) return;
+  const sx = Math.floor(loadedImg.width * x1p / 100);
+  const sy = Math.floor(loadedImg.height * y1p / 100);
+  const sw = Math.min(loadedImg.width - sx, Math.floor(loadedImg.width * wp / 100));
+  const sh = Math.min(loadedImg.height - sy, Math.floor(loadedImg.height * hp / 100));
+  const cv = document.getElementById('cv-crop');
+  cv.width = sw * zoom; cv.height = sh * zoom;
+  const ctx = cv.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(loadedImg, sx, sy, sw, sh, 0, 0, sw * zoom, sh * zoom);
+}
+
+function downloadCrop() {
+  const cv = document.getElementById('cv-crop');
+  const a = document.createElement('a');
+  a.download = 'kanit_kesiti_1x1.png';
+  a.href = cv.toDataURL('image/png');
+  a.click();
+}
+
+buildPrompt(); convertCal(); calcAges();
+</script>
+</body>
+</html>
