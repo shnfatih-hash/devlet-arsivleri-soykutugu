@@ -1,0 +1,17 @@
+name: "🐛 Hata / Tarih Hesabı / Betik Sorunu Bildirimi"
+description: "tarih_cevirici.py, crop_and_verify.py, dab_helpers.js veya rehberdeki bir bilgide hata bildirin."
+title: "[Hata] "
+labels: ["hata"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: "Karşılaşılan Hata"
+      placeholder: "Hangi adımda hangi hatayı aldığınızı kısaca açıklayın."
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Hata Çıktısı (Varsa)"
+      render: text

@@ -1,0 +1,23 @@
+name: "📖 Yeni Fon Kodu, Eski Köy Adı veya Arşiv Terimi Katkısı"
+description: "Rehbere yeni bir arşiv fon kodu, göçmen/mübadil kaynağı, Osmanlıca arşiv kelimesi veya bölgesel defter ipucu eklenmesini önerin."
+title: "[Arşiv / Sözlük Katkısı] "
+labels: ["katki-sozluk"]
+body:
+  - type: dropdown
+    id: category
+    attributes:
+      label: "Katkı Türü"
+      options:
+        - Arşiv Fon Kodu / Defter Serisi İpucu
+        - Göçmen / Mübadil (Balkanlar, Adalar, Kafkasya) Kaynağı
+        - Osmanlıca Defter Kelimesi / Kısaltması
+        - Bölgesel / Eski Yer Adı Notu
+    validations:
+      required: true
+  - type: textarea
+    id: entry
+    attributes:
+      label: "Katkı İçeriği"
+      placeholder: "Örn: Fon kodu, dönemi, ne tür kayıtlar içerdiği veya Osmanlıca terimin yazılışı ve anlamı..."
+    validations:
+      required: true

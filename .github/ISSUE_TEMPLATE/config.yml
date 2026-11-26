@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Hugging Face Topluluk Tartışmaları (Hesapsız / Hızlı Soru)
+    url: https://huggingface.co/spaces/sahanfatih/devlet-arsivleri-soykutugu/discussions
+    about: Canlı web aracı üzerinden soy kütüğü ve arşiv araması hakkında soru sormak veya tecrübe paylaşmak için.

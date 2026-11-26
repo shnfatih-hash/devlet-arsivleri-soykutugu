@@ -65,6 +65,7 @@
     <button class="tab-btn" onclick="openTab('p-date', this)">🗓️ Osmanlıca Tarih &amp; Kuşak Yaşı</button>
     <button class="tab-btn" onclick="openTab('p-folio', this)">🔍 Sağ/Sol Varak &amp; 1:1 Piksel Kesiti</button>
     <button class="tab-btn" onclick="openTab('p-install', this)">📦 Tek Komutla Kurulum &amp; Kardeş Projeler</button>
+    <button class="tab-btn" onclick="openTab('p-contrib', this)">🤝 Soru Sor &amp; Katkı Sun</button>
   </div>
 
   <section id="p-prompt" class="panel active">
@@ -175,6 +176,36 @@ pip install Pillow</pre>
         <li>🖋️ <strong><a href="https://huggingface.co/spaces/sahanfatih/osmanlica-resmi-evrak" target="_blank">osmanlica-resmi-evrak</a>:</strong> Ferman, Berat, İrade, Hüccet ve Tahriratları TDV İA/TTK transkripsiyon sistemi ve İnteraktif HTML çalışma kartıyla okuma becerisi.</li>
         <li>📖 <strong><a href="https://huggingface.co/spaces/sahanfatih/yazma-eser-paralel-tercume" target="_blank">yazma-eser-paralel-tercume</a>:</strong> 100+ sayfalık Arapça/Osmanlıca/Farsça el yazmalarını 10 paralel alt-ajan ve ortak <code>glossary.md</code> sözlüğüyle tercüme becerisi.</li>
       </ul>
+    </div>
+  </section>
+
+  <section id="p-contrib" class="panel">
+    <div class="card">
+      <h3 style="margin-top:0;">🤝 Teknik Soru Sor, Arşiv Fonu / Terim Ekle veya Katkıda Bulun</h3>
+      <p style="font-size:0.93rem;color:var(--muted);">Kod veya Git bilmeden de aşağıdaki hazır formlarla sorunuzu sorabilir, yeni fon kodu, göçmen/mübadil kaynağı veya Osmanlıca arşiv kelimesi katkısı gönderebilirsiniz. <strong>Not:</strong> T.C. Kimlik No veya şifre paylaşmayın.</p>
+      <div class="grid-2">
+        <div style="border:1px solid var(--border);border-radius:10px;padding:15px;background:#faf7f0;">
+          <strong>❓ Teknik Soru &amp; Chrome MCP Desteği</strong>
+          <p style="font-size:0.88rem;color:var(--muted);margin:6px 0 12px;">Chrome DevTools MCP, HTTP 418, fihrist kontrolü veya defter bulma sorularınız.</p>
+          <a class="action-btn" style="display:inline-block;text-decoration:none;margin-top:0;" href="https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu/issues/new?template=01-soru-ve-teknik-destek.yml" target="_blank" rel="noopener">Soru Formunu Aç ↗</a>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:10px;padding:15px;background:#faf7f0;">
+          <strong>📖 Fon Kodu, Eski Köy Adı veya Arşiv Terimi Katkısı</strong>
+          <p style="font-size:0.88rem;color:var(--muted);margin:6px 0 12px;">Yeni bir arşiv fonu, göçmen/mübadil kaynağı veya defter kısaltması önerin.</p>
+          <a class="action-btn secondary" style="display:inline-block;text-decoration:none;margin-top:0;" href="https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu/issues/new?template=02-terim-ve-sozluk-katkisi.yml" target="_blank" rel="noopener">Arşiv Katkısı Gönder ↗</a>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:10px;padding:15px;background:#faf7f0;">
+          <strong>💡 Yeni Prompt veya Yöntem Önerisi</strong>
+          <p style="font-size:0.88rem;color:var(--muted);margin:6px 0 12px;">Soy kütüğü, köy tarihi veya şer'iyye sicili araştırmasında işe yarayan taktiklerinizi paylaşın.</p>
+          <a class="action-btn" style="display:inline-block;text-decoration:none;margin-top:0;background:#8a6200;" href="https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu/issues/new?template=03-prompt-ve-yontem-onerisi.yml" target="_blank" rel="noopener">Öneri Gönder ↗</a>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:10px;padding:15px;background:#faf7f0;">
+          <strong>🐛 Hata Bildirimi &amp; 💬 Topluluk Tartışmaları</strong>
+          <p style="font-size:0.88rem;color:var(--muted);margin:6px 0 12px;">Tarih çevirici veya betik hatası bildirin; Hugging Face Topluluk panosunda tartışın.</p>
+          <a class="action-btn" style="display:inline-block;text-decoration:none;margin-top:0;background:#9b1c1c;" href="https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu/issues/new?template=04-hata-bildirimi.yml" target="_blank" rel="noopener">Hata Bildir ↗</a>
+          <a class="action-btn" style="display:inline-block;text-decoration:none;margin-top:0;margin-left:6px;background:#24292f;" href="https://huggingface.co/spaces/sahanfatih/devlet-arsivleri-soykutugu/discussions" target="_blank" rel="noopener">HF Topluluk ↗</a>
+        </div>
+      </div>
     </div>
   </section>
 </main>

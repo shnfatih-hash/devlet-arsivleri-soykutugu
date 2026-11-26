@@ -1,0 +1,12 @@
+name: "💡 Yeni Prompt, Yöntem veya Özellik Önerisi"
+description: "Soy kütüğü, köy tarihi veya şer'iyye sicili araştırmalarında verim aldığınız promptları ve geliştirme fikirlerini paylaşın."
+title: "[Öneri] "
+labels: ["katki-prompt"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: "Öneriniz veya Prompt Şablonunuz"
+      placeholder: "İşe yarayan arama stratejinizi, prompt şablonunuzu veya araca eklenmesini istediğiniz özelliği yazın."
+    validations:
+      required: true

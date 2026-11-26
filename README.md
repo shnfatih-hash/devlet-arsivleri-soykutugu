@@ -314,6 +314,15 @@ devlet-arsivleri-soykutugu/
 
 Bu beceri paketi ve araştırma metodolojisi, **Said Sürücü**'nün seminerinden hareketle hazırlanmış ve geliştirilmiştir. Yapay zekâ destekli arşiv ve soy kütüğü araştırmalarına ilham veren kıymetli paylaşımı ve rehberliği için **Said Sürücü**'ye gönülden teşekkür ederiz.
 
+### 🤝 Soru Sor, Fon / Terim Ekle ve Katkıda Bulun
+
+Kod veya Git bilmeden de aşağıdaki hazır formlarla teknik soru sorabilir, yeni fon kodu, göçmen/mübadil kaynağı veya Osmanlıca arşiv kelimesi katkısı gönderebilirsiniz (ayrıntılar: [CONTRIBUTING.md](CONTRIBUTING.md)):
+
+- ❓ **[Teknik Soru & Arşiv / Chrome MCP Desteği](https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu/issues/new?template=01-soru-ve-teknik-destek.yml)**
+- 📖 **[Yeni Fon Kodu, Eski Köy Adı veya Arşiv Terimi Katkısı](https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu/issues/new?template=02-terim-ve-sozluk-katkisi.yml)**
+- 💡 **[Yeni Prompt veya Özellik Önerisi](https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu/issues/new?template=03-prompt-ve-yontem-onerisi.yml)**
+- 🐛 **[Hata Bildirimi](https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu/issues/new?template=04-hata-bildirimi.yml)** • 💬 **[Hugging Face Topluluk](https://huggingface.co/spaces/sahanfatih/devlet-arsivleri-soykutugu/discussions)**
+
 ### ♥ Projeye Gönüllü Destek
 
 Bu proje tamamen ücretsiz ve açık kaynaklıdır; herkesin özgürce kullanımına açık kalacaktır. Çalışmayı faydalı bulduysanız ve yeni Osmanlı arşivi / dijital beşerî bilimler AI Skill'lerinin geliştirilmesine gönüllü olarak katkıda bulunmak isterseniz bir kahve ısmarlayarak veya GitHub Sponsors üzerinden destek olabilirsiniz:

@@ -1,0 +1,36 @@
+name: "❓ Teknik Soru & Arşiv / Chrome MCP Desteği"
+description: "Chrome DevTools MCP kurulumu, 'Web Sayfasına Erişim Engellendi' uyarısı, HTTP 418, fihrist testi veya defter bulma hakkında soru sorun."
+title: "[Soru] "
+labels: ["soru-destek"]
+body:
+  - type: markdown
+    attributes:
+      value: "Lütfen **T.C. Kimlik Numaranızı veya kişisel e-Devlet şifrenizi asla paylaşmayın**; yalnızca köy/kaza adı, dönem ve karşılaştığınız teknik adımı yazın."
+  - type: dropdown
+    id: platform
+    attributes:
+      label: "Kullandığınız Ortam"
+      options:
+        - Google Antigravity + Chrome DevTools MCP
+        - Claude Code / Cursor
+        - İndirilmiş .zip/.jpg (MCP'siz Mod B)
+        - Hugging Face Canlı Web Aracı
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: "İşletim Sistemi"
+      options:
+        - Windows
+        - macOS
+        - Linux
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: "Sorunuz / Takıldığınız Adım"
+      placeholder: "Hangi fon veya adımda takıldığınızı ve varsa hata mesajını buraya yazın."
+    validations:
+      required: true
