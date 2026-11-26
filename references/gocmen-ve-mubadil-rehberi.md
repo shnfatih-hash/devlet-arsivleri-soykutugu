@@ -51,3 +51,32 @@ Pek çok araştırmacının bilmediği en önemli gerçek şudur: Bugün Türkiy
 1. Önce *Alt-Üst Soy Belgesi*, *İsim Denklik Belgesi* veya *Tasfiye Talepnamesi* (`BCA 130-16-13-2`) üzerinden atalarınızın Balkanlar'daki veya Adalar'daki **tam kaza ve köy adını** tespit edin.
 2. Ardından `https://katalog.devletarsivleri.gov.tr/Sayfalar/Arama/OzelArama.aspx` sayfasında Fon Kodu kutusuna **`NFS.d`** (veya **`ML.VRD.TMT.d`**, daha eski yüzyıllar için **`TT.d`** ve **`MAD.d`**) yazıp ilgili sancağın/kazanın adını aratın.
 3. Defterin fihristinden köyünüzü bularak tıpkı Anadolu köylerinde olduğu gibi 1830–1875 arasındaki büyük dedelerinizi **boy, sakal/bıyık eşkâli, baba adı ve yaşlarıyla** tespit edin!
+
+---
+
+## 5. Uluslararası ve Bölgesel Açık Arşiv Kaynakları (Çapraz Doğrulama)
+
+> **Gizlilik Kuralı:** Aşağıdaki dış açık arşivlerde ve web/API aramalarında **yalnızca yer adı, yıl ve konu** kullanın; yaşayan veya gerçek şahıs isimlerini kullanıcının açık onayı olmadan dış arama motorlarına göndermeyin.
+
+### A. Yunanistan ve 1923 Mübadelesi
+- **Pandektis — Yer Adı Değişim Veritabanı (`http://pandektis.ekt.gr`):** Yunanistan'daki eski Osmanlıca/Türkçe/Slavca köy ve kaza adlarının 1920 sonrası yeni Yunanca karşılıklarını ve ad değişim tarihlerini verir.
+- **ELSTAT Dijital Kütüphanesi (`https://dlib.statistics.gr`):** 1920 ve 1928 Yunanistan nüfus sayımları (yerleşim bazında mübadele öncesi ve sonrası mülteci nüfus dökümleri).
+- **Yunanistan Genel Devlet Arşivleri — ΓΑΚ (`https://gak.gr`):** Bölge şubelerinde iskân ve arazi dosyaları.
+- **Lozan Mübadilleri Vakfı (`https://www.lozanmubadilleri.org.tr`):** Çıkış–varış yerleşim listeleri, vapur kayıtları ve sözlü tarih derlemeleri *(ipucu olarak kullanılır; birincil arşivle doğrulanır)*.
+- **Küçük Asya Araştırmaları Merkezi (*Centre for Asia Minor Studies*):** Anadolu'dan Yunanistan'a giden Rumların köy köy sözlü tarih kayıtları — mübadelede *"aynanın öbür yüzünü"* (aynı köyün/kasabanın 1923 öncesi dokusunu) görmek için benzersizdir.
+
+### B. Bosna-Hersek ve Balkanlar
+- **Bosna-Hersek Avusturya-Macaristan Sayımları (1879, 1885, 1895, 1910):** Internet Archive ve Google Books üzerinde yayımlanmış resmî istatistik ciltleri (*Die Ergebnisse der Volkszählung in Bosnien und der Hercegovina*) ile **Gazi Hüsrev Bey Kütüphanesi (`https://www.ghb.ba`)**.
+- **ANNO — Avusturya Millî Kütüphanesi Gazete Arşivi (`https://anno.onb.ac.at`):** 19.–20. yüzyıl Bosna ve Balkanlar haberleri için günlük gazete arşivi.
+- **Bulgaristan Devlet Arşivleri (`https://archives.government.bg`):** 1880–1930 Bulgaristan sayımları ve 1878 sonrası göç kayıtları.
+- **Sırbistan Dijital Millî Kütüphanesi (`https://digitalna.nb.rs`):** 1878 ve 1912 Niş, Vranje, Kosova bölgesi tarihsel yayınları.
+
+### C. Kafkasya (Kars, Ardahan, Batum — 1878–1918)
+- **1897 Rus İmparatorluğu Sayımı (`https://www.demoscope.ru`):** Uyezd (kaza) bazında din, dil ve nüfus tabloları.
+- ***Kavkazskiy kalendar'* Yıllıkları (1845–1917):** Kafkasya vilayet, kaza, köy ve demografi yıllıkları (Internet Archive / Rusya Millî Kütüphanesi).
+
+### D. Türkiye Yerel Tarih, Harita ve Salname Çapraz Kaynakları
+- **Nişanyan Map / Index Anatolicus (`https://www.nisanyanmap.com`):** Anadolu ve Trakya köylerinin eski adları ve ad değişim yılları.
+- **İSAM Kütüphanesi (`https://ktp.isam.org.tr`) & Vilâyet Salnameleri (1866–1918):** Kaza/nahiye bazında nüfus, memur, cami, mektep ve köy dökümleri.
+- **SALT Research (`https://archives.saltresearch.org`) & Atatürk Kitaplığı:** Dönem fotoğrafları, haritalar, kartpostallar ve Osmanlı süreli yayınları.
+- **DergiPark (`https://dergipark.org.tr`) & YÖK Ulusal Tez Merkezi (`https://tez.yok.gov.tr/UlusalTezMerkezi/`):** Hemen her ilçe ve sancak üzerine yerel tarih, vakıf, göç ve temettuat tez/makaleleri.

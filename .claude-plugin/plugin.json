@@ -1,0 +1,14 @@
+{
+  "name": "devlet-arsivleri-soykutugu",
+  "version": "1.2.0",
+  "description": "e-Devlet Alt-Üst Soy Bilgisi, Chrome DevTools MCP ve 1:1 piksel kesitiyle T.C. Devlet Arşivleri üzerinden 1500'lere kadar soy kütüğü, köy tarihi ve İnteraktif HTML göç haritası aracı.",
+  "author": {
+    "name": "Fatih Şahan",
+    "url": "https://github.com/shnfatih-hash"
+  },
+  "repository": "https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu",
+  "license": "MIT",
+  "skills": [
+    "."
+  ]
+}

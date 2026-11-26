@@ -1,0 +1,131 @@
+{
+  "baslik": "Örnek Ailesi — Arşiv ve Göç Haritası (Kurgusal Test Verisi)",
+  "alt_baslik": "Kişiler kurgusaldır; tarihî yerleşimler, fon örnekleri ve göç bağlamı gerçektir.",
+  "kisiler": [
+    {
+      "id": "p1",
+      "ad": "Ali bin Mehmed (Hacıalioğlu)",
+      "kol": "Baba Tarafı — 4. Kuşak",
+      "dogum_yili": 1842,
+      "dogum_yeri": "Selanik / Karaferye",
+      "kanit": "KESİN KANIT",
+      "kaynak": "BOA, NFS.d. (Örnek temsilî kayıt)"
+    },
+    {
+      "id": "p2",
+      "ad": "Hasan Örnek",
+      "kol": "Baba Tarafı — 3. Kuşak",
+      "dogum_yili": 1895,
+      "dogum_yeri": "Selanik",
+      "baba_id": "p1",
+      "kanit": "KESİN KANIT",
+      "kaynak": "BCA, 130-16-13-2 Tasfiye Talepnamesi (Örnek)"
+    },
+    {
+      "id": "p3",
+      "ad": "Mehmet Yılmaz",
+      "kol": "Anne Tarafı — 3. Kuşak",
+      "dogum_yili": 1902,
+      "dogum_yeri": "Trabzon / Of",
+      "kanit": "GÜÇLÜ EŞLEŞME",
+      "kaynak": "Sicill-i Nüfus Esas Kütüğü (R. 1320)"
+    },
+    {
+      "id": "p4",
+      "ad": "Murat Örnek",
+      "kol": "Baba Tarafı — 2. Kuşak",
+      "dogum_yili": 1926,
+      "dogum_yeri": "İzmir / Urla",
+      "baba_id": "p2",
+      "kanit": "KESİN KANIT",
+      "kaynak": "e-Devlet Alt-Üst Soy Bilgisi"
+    }
+  ],
+  "yerler": [
+    {
+      "id": "selanik",
+      "ad": "Selanik / Karaferye",
+      "lat": 40.6401,
+      "lon": 22.9444,
+      "donem": "1840–1923",
+      "renk": "#9a6b2f",
+      "not": "1923 Lozan Mübadelesi öncesi baba tarafının yaşadığı Rumeli yerleşimi."
+    },
+    {
+      "id": "izmir",
+      "ad": "İzmir / Urla",
+      "lat": 38.3229,
+      "lon": 26.7647,
+      "donem": "1924–1960",
+      "renk": "#1d4e89",
+      "not": "Mübadele sonrası iskân edilen yerleşim."
+    },
+    {
+      "id": "of",
+      "ad": "Trabzon / Of",
+      "lat": 40.9406,
+      "lon": 40.2592,
+      "donem": "1835–1955",
+      "renk": "#166534",
+      "not": "Anne tarafının Karadeniz'deki ata ocağı."
+    },
+    {
+      "id": "istanbul",
+      "ad": "İstanbul",
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "donem": "1960–Günümüz",
+      "renk": "#7c2d12",
+      "not": "İki kolun birleştiği modern dönem yerleşimi."
+    }
+  ],
+  "rotalar": [
+    {
+      "from": "selanik",
+      "to": "izmir",
+      "yil": "1923–1924",
+      "etiket": "Lozan Mübadelesi Deniz Yolu (Temsilî)",
+      "kanit": "KESİN KANIT",
+      "renk": "#1d4e89"
+    },
+    {
+      "from": "of",
+      "to": "istanbul",
+      "yil": "1955",
+      "etiket": "Karadeniz'den İstanbul'a İç Göç",
+      "kanit": "AİLE ANLATISI",
+      "renk": "#166534"
+    },
+    {
+      "from": "izmir",
+      "to": "istanbul",
+      "yil": "1962",
+      "etiket": "İzmir'den İstanbul'a Taşınma",
+      "kanit": "KESİN KANIT",
+      "renk": "#9a6b2f"
+    }
+  ],
+  "olaylar": [
+    {
+      "yil": "1844",
+      "baslik": "Tanzimat Nüfus ve Temettuat Sayımları",
+      "kanit": "KESİN KANIT",
+      "aciklama": "Rumeli ve Anadolu kazalarında hane reislerinin lakap, meslek ve gelirleri defterlere kaydedildi.",
+      "kaynak": "BOA, NFS.d & ML.VRD.TMT.d"
+    },
+    {
+      "yil": "1923–1924",
+      "baslik": "Lozan Mübadelesi ve Vapur Yolculuğu",
+      "kanit": "AİLE ANLATISI",
+      "aciklama": "30 Ocak 1923 Lozan Sözleşmesi belgeli olup, ailede anlatılana göre tek bir çeyiz sandığıyla İzmir iskelesine inilmiştir.",
+      "kaynak": "Lozan Sözleşmesi + Aile Sözlü Tarihi"
+    },
+    {
+      "yil": "1934",
+      "baslik": "Soyadı Kanunu",
+      "kanit": "KESİN KANIT",
+      "aciklama": "Eski sülale lakapları yerine resmî soyadı tescil edildi.",
+      "kaynak": "Nüfus Esas Kütüğü"
+    }
+  ]
+}

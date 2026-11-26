@@ -22,13 +22,16 @@ Bu beceri, **Said Sürücü**'nün seminerinden hareketle geliştirilmiş olup; 
 - **Tarayıcı İçi Güvenli Arama ve Varak Ayırma Yardımcıları:** [dab_helpers.js](./scripts/dab_helpers.js)
 - **İndirilen `.zip / .jpg` Belgelerden 1:1 Piksel Kesiti Alma Aracı:** [crop_and_verify.py](./scripts/crop_and_verify.py)
 - **3 Yönlü Hicrî ↔ Rûmî ↔ Milâdî Tarih Çevirici:** [tarih_cevirici.py](./scripts/tarih_cevirici.py)
+- **GEDCOM İçe Aktarma, Doğrulama & İnteraktif HTML Göç Haritası Üretici:** [soyagaci_ve_harita.py](./scripts/soyagaci_ve_harita.py)
 - **Kullanıcılar İçin Hazır Şablon İstemler:** [ornek-kullanim-promptlari.md](./examples/ornek-kullanim-promptlari.md)
 
 ---
 
 ## Güvenlik, Mahremiyet, Yerleşik Tarayıcı Yasağı ve Hız Sınırı Kuralları (Zorunlu)
 
-1. **Şifre ve Kimlik Gizliliği:** Kullanıcının T.C. Kimlik Numarasını veya e-Devlet şifresini **asla** istemeyin. Kullanıcı `https://katalog.devletarsivleri.gov.tr` adresine kendi normal Google Chrome tarayıcısında bizzat giriş yapar.
+1. **Şifre, Kimlik ve "Dış Aramalarda İsim Kullanmama" Gizlilik Kuralı:**
+   - Kullanıcının T.C. Kimlik Numarasını veya e-Devlet şifresini **asla** istemeyin. Kullanıcı `https://katalog.devletarsivleri.gov.tr` adresine kendi normal Google Chrome tarayıcısında bizzat giriş yapar.
+   - **Dış aramalarda kişi adı sızdırmama:** Web aramaları, akademik API'ler (DergiPark, OpenAlex, Nişanyan Map vb.) ve görsel aramaları yalnızca **yer adı, yıl ve konu** içerir; yaşayan veya gerçek şahıs isimleri kullanıcının açık onayı olmadan dış arama motorlarına gönderilmez. Üretilen rapor ve haritalar yerel dosya olarak kalır.
 2. **Antigravity Yerleşik Tarayıcısı (`browser` Alt-Ajanı) Yasağı — `"Web Sayfasına Erişim Engellendi"` Çözümü:**
    - `katalog.devletarsivleri.gov.tr` veya `turkiye.gov.tr` adreslerini **ASLA** Antigravity'nin kendi dahili tarayıcısında (`browser` subagent / yerleşik webview) açmayın! Kurum güvenlik duvarı yerleşik tarayıcıyı *"(!) Web Sayfasına Erişim Engellendi"* uyarısıyla engeller.
    - Yalnızca **`chrome-devtools` MCP** üzerinden kullanıcının bilgisayarındaki **normal Google Chrome** oturumuna bağlanın.
@@ -115,10 +118,12 @@ Arşivde günümüzden 1500'lere doğru şu **6 basamaklı merdiveni** izleyin:
 - **`+ΔYıl` Çapraz Sayım Eşleştirmesi:** İki sayım arasındaki yıl farkı (ör. `1834 → 1844 = +10 yıl`), aynı hanedeki baba, oğul ve kardeşlerin yaşlarına tutarlı biçimde (`±2–3` yıl taşra yuvarlama payıyla) yansımalıdır.
 - **`1/N` Nadir İsim ve Yan Soy Filtresi:** Köydeki tüm haneleri tarayın; sadece düz üst soyu değil, **amcaları, kardeşleri, dede adını ilk toruna verme geleneğini ve sülale lakabını** çapraz doğrulayın.
 
-### 2. Üçlü Kanıt Seviyesi (Her Eşleşmede Açıkça Etiketleyin)
-- **`[KESİN KANIT]`:** e-Devlet kütüğü, Esas Nüfus Defteri veya `isim + baba adı + lakap + köy + tutarlı yaş` bütünlüğüyle doğrudan kanıtlanan kayıt.
-- **`[GÜÇLÜ EŞLEŞME]`:** Aynı köyde nadir isim, uyumlu yaş ve hane/kardeş dizilimiyle örtüşen, ara kütük teyidiyle kesinleşecek kayıt.
-- **`[İSİM / SÜLALE İZİ]`:** 16.–17. yüzyıl tahrir/avârız defterlerinde aynı köyde geçen aynı ad veya lakap (doğrudan kan bağı kanıtı değil, köy içi tarihsel süreklilik izidir).
+### 2. Beşli Kanıt Seviyesi ve Anlatım Üslubu (Her Eşleşmede Açıkça Etiketleyin)
+- **`[KESİN KANIT]`:** e-Devlet kütüğü, Esas Nüfus Defteri veya `isim + baba adı + lakap + köy + tutarlı yaş` bütünlüğüyle doğrudan kanıtlanan kayıt *(raporda düz kesin ifadeyle yazılır)*.
+- **`[GÜÇLÜ EŞLEŞME]`:** Aynı köyde nadir isim, uyumlu yaş ve hane/kardeş dizilimiyle örtüşen, ara kütük teyidiyle kesinleşecek kayıt *(raporda "kayıtlar ... işaret etmektedir / büyük olasılıkla" üslubuyla yazılır)*.
+- **`[İSİM / SÜLALE İZİ]`:** 16.–17. yüzyıl tahrir/avârız defterlerinde aynı köyde geçen aynı ad veya lakap *(doğrudan kan bağı kanıtı değil, köy içi tarihsel süreklilik izidir)*.
+- **`[BÖLGESEL GÖÇ & CEMAAT BAĞLAMI]`:** 15.–18. yüzyıl tahrir ve mühimme kayıtlarında bölgede belgelenen aşiret/oymak/iskân hareketleri.
+- **`[AİLE ANLATISI / SÖZLÜ TARİH]`:** Aile veya köy içinde kuşaktan kuşağa aktarılan ancak henüz birincil arşiv belgesiyle doğrulanmamış hikâyeler (ör. göç vapuru, sandık, göç sebebi) *(raporda daima "ailede anlatılana göre..." / "sözlü rivayete göre..." ihtiyat kalıbıyla yazılır)*.
 
 ### 3. En Sık Yapılan 5 Hata (Kaçınılması Zorunlu)
 1. **Eş adlı köye aldanmak:** Sayfa başlığındaki `tâbi-i ...` (bağlı olduğu kaza/nahiye) kaydını ve komşu köy sırasını kontrol etmeden okuma yapmayın.
@@ -137,4 +142,4 @@ Bulguları kullanıcıya şu yapılandırılmış düzende sunun:
 2. **Köyün / Mahallenin Tarihçesi, Eski Adı ve İdari Evrimi:** 16. yüzyıldan günümüze idari bağlılık zinciri ve demografik/mali gelişim tablosu (her rakamın yılı, birimi ve birincil kaynağı belirtilerek).
 3. **Köydeki Kurucu Ocaklar, Önemli Kişiler ve Tarihî Olaylar:** İmamlar, muhtarlar, sipahiler, vakıflar, göç/iskân, salgınlar, eşkıya/aşiret fermanları ve askerî/seferberlik (*Asâkir-i Mansûre, Redîf, Balkan, Çanakkale, İstiklâl Harbi*) kayıtları.
 4. **Tam Arşiv Künyeleri ve Nokta Atışı İndirme Tablosu:** `Arşiv | Fon Kodu | Defter/Dosya-Gömlek | Hicrî/Rûmî & Milâdî Tarih | Varak & Poz (Mi) | İçerik Özeti`.
-5. *(İsteğe Bağlı İleri Çıktılar)*: Kullanıcı talep ederse bulguları **Avrupa *Ortsgeschichte* tarzında çok bölümlü baskıya hazır HTML/PDF köy-aile kitabı** ve **interaktif HTML soyağacı tablosu** olarak üretin.
+5. *(İsteğe Bağlı İleri Çıktılar)*: Kullanıcı talep ederse bulguları **Avrupa *Ortsgeschichte* tarzında çok bölümlü baskıya hazır HTML/PDF köy-aile kitabı** ve `scripts/soyagaci_ve_harita.py` ile **sıfır kurulumlu İnteraktif HTML Göç Haritası ve Kuşak Zaman Çizelgesi** olarak üretin.

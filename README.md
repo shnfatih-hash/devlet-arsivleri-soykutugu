@@ -125,8 +125,13 @@ git clone https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu.git ~/.gem
 git clone https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu.git .agents/skills/devlet-arsivleri-soykutugu
 ```
 
-**3. Claude Code veya Codex Kurulumu:**
+**3. Claude Code (Plugin Marketplace veya Doğrudan Skill):**
 ```bash
+# Claude Code Plugin olarak (tek komutla):
+claude plugin marketplace add shnfatih-hash/devlet-arsivleri-soykutugu
+claude plugin install devlet-arsivleri-soykutugu@devlet-arsivleri-soykutugu
+
+# Veya doğrudan skill klasörüne kopyalayarak:
 git clone https://github.com/shnfatih-hash/devlet-arsivleri-soykutugu.git ~/.claude/skills/devlet-arsivleri-soykutugu
 ```
 
@@ -210,6 +215,19 @@ Her eşleşme aynı kesinlikte değildir; bu beceri her bulguyu dört şeffaf ka
 - 🟡 **`[GÜÇLÜ EŞLEŞME]`:** Aynı köy, nadir isim, uyumlu yaş ve kardeş dizilimi bir arada bulunan güçlü aday.
 - ⚪ **`[İSİM / SÜLALE İZİ]`:** Başka bir yüzyılda (ör. 1584 tahririnde) aynı köyde geçen aynı isim veya lakap; doğrudan kan bağı kanıtı sayılmaz, tarihsel süreklilik izi olarak belirtilir.
 - 🔵 **`[BÖLGESEL GÖÇ & CEMAAT BAĞLAMI]`:** 15.–18. yüzyıl tahrir ve mühimme kayıtlarında köyün/nahiyenin çevresinde belgelenen konar-göçer boy, aşiret veya iskân hareketleri.
+- 🟠 **`[AİLE ANLATISI / SÖZLÜ TARİH]`:** Aile içinde kuşaktan kuşağa aktarılan ancak henüz arşiv belgesiyle doğrulanmamış hikâyeler *(raporda daima "ailede anlatılana göre..." ihtiyat üslubuyla yazılır)*.
+
+> **Gizlilik İlkesi:** Web ve akademik API aramaları yalnızca **yer + yıl + konu** içerir; gerçek kişi isimleri kullanıcının açık onayı olmadan dış arama motorlarına gönderilmez.
+
+### GEDCOM İçe Aktarma & Sıfır Kurulumlu İnteraktif HTML Göç Haritası
+```bash
+# MyHeritage / Ancestry GEDCOM (.ged) dosyasını JSON'a çevir ve yaş/kuşak tutarlılığını denetle:
+python scripts/soyagaci_ve_harita.py import-gedcom aile.ged --out familytree.json
+python scripts/soyagaci_ve_harita.py validate familytree.json
+
+# Kurgusal örnek veriyle tek dosyalık İnteraktif HTML Göç Haritası & Zaman Çizelgesi üret:
+python scripts/soyagaci_ve_harita.py render-map examples/ornek_aile_verisi.json --out goc_haritasi.html
+```
 
 **En Sık Yapılan 5 Hata:**
 1. *Antigravity'nin kendi dahili tarayıcısını açmak* → `"Web Sayfasına Erişim Engellendi"` hatası verir; daima normal Chrome + Chrome DevTools MCP kullanın.

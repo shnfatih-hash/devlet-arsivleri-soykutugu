@@ -1,0 +1,14 @@
+{
+  "name": "devlet-arsivleri-soykutugu",
+  "owner": {
+    "name": "Fatih Şahan",
+    "url": "https://github.com/shnfatih-hash"
+  },
+  "plugins": [
+    {
+      "name": "devlet-arsivleri-soykutugu",
+      "source": "./",
+      "description": "1500'lere kadar 1:1 piksel kanıtlı Osmanlı arşivi soy kütüğü, köy tarihi ve İnteraktif HTML göç haritası becerisi."
+    }
+  ]
+}
