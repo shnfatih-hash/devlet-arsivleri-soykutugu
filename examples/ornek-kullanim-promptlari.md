@@ -82,5 +82,5 @@ Bu proje klasöründeki çok sayfalı arşiv defteri / el yazması dosyasını (
 
 1. Önce sayfaları ayrı görüntülere çıkar ve proje klasöründe tüm ajanların ortak okuyup güncelleyeceği bir `glossary.md` (sülale lakapları, şahıs/yer adları, teknik terimler ve yazım kuralları sözlüğü) dosyası oluştur.
 2. Sayfaları **10'arlı gruplar halinde paralel alt-ajanlara (`subagent`)** dağıt: aynı anda çalışan 10 ajan kendi sayfasını 1:1 kesit disipliniyle okuyup `sayfalar/sayfa_001.md`, `sayfa_002.md` ... şeklinde kaydetsin; okunamayan yerleri uydurmayıp `[...]` şerhi düşsün ve yeni tespit ettiği terimleri/lakapları ortak `glossary.md` için raporlasın.
-3. Tüm sayfalar tamamlandığında ayrı bir **Tutarlılık ve Tahkik Editörü Alt-Ajanı** görevlendir; `glossary.md` üzerinden tüm sayfalardaki şahıs adlarını, lakapları, tarihleri ve kavram birliğini baştan sona denetleyip tek parça nihai metin ve dizin dosyasını oluştur.
+3. Tüm sayfalar tamamlandığında ayrı bir **Tutarlılık ve Tahkik Editörü Alt-Ajanı** görevlendir; `glossary.md` üzerinden varak sonlarındaki rekabe (*müş‘ir kelime*) tekrarlarını temizleyip sayfa geçişinde bölünen kayıtları birleştir ve tüm sayfalardaki şahıs adlarını, lakapları, tarihleri ve kavram birliğini baştan sona denetleyip tek parça nihai metin ve dizin dosyasını oluştur.
 ```
