@@ -77,6 +77,26 @@ Katalog aramalarında Arap alfabesindeki çok sesli harflerden kaynaklanan şu d
 - **Te (`ت`) ve Dal (`د`):** Kelime sonunda ve eklerde sıkça nöbetleşir (`-it ↔ -id`, `-et ↔ -ed`, *Ahmed / Ahmet*, *Murad / Murat*).
 - **Be (`ب`) ve Pe (`پ`) / Cim (`ج`) ve Çim (`چ`):** Katalog kâtipleri nokta sayısına göre *Bınar / Pınar*, *Cukur / Çukur*, *Cenger / Çenger* şeklinde aktarabilir.
 - **Ünlü Yazımı:** İlk ve orta hecede ünlü harf (`ا / و / ى`) yazılmadığında `ı / i / e / a` veya `u / ü / o / ö` varyantlarını ve `*` joker karakterini deneyin.
+- **Unicode Harf Eşitlemesi (`Ye` ve `Kef` Kod Farkları):** Dijital kataloglarda, veritabanlarında ve OCR/metin çıktılarında aynı Osmanlıca kelime bazen Arapça Unicode (`ي` U+064A, `ى` U+0649, `ك` U+0643), bazen Osmanlıca/Farsça Unicode (`ی` U+06CC, `ک` U+06A9, `گ` U+06AF) veya **Sağır Kef (`ڭ` U+06AD)** ile kodlanır. Arama ve metin karşılaştırmalarında bu karakter çiftlerini daima eşdeğer kabul edin.
+- **Kalıplaşmış Ekler, `Sağır Kef (ڭ)` ve `غروش` İmlâ Kuralı:**
+  - Türkçe ilgi eki (`-in / -ın / -nin / -nın`) Osmanlı imlâsında `ن` (*nun*) ile değil **`ڭ` (*Sağır Kef / Kef-i Nûnî*)** ile yazılır (ör. *Hasan'ın* → `حسنڭ`, *köyün* → `قريه‌نڭ`, *sonra* → `صڭره / صكره`); rik'a hattında noktaları yazılmadığında normal `ك` gibi görünür.
+  - Para birimi olan *kuruş* kelimesi terekelerde ve temettuat defterlerinde `ق` ile değil daima **`غروش` (*ġurûş*)** şeklinde yazılır.
+
+---
+
+## 3b. Şer'iyye Sicilleri (Kadı Mahkemesi & Tereke) Kalıp İbareler ve `Şuhûdü'l-Hâl` Taktiği
+
+Şer'iyye sicillerinde (`MŞH.ŞSC.d` ve `kadisicilleri.org`) mahkeme kâtiplerinin kullandığı standart hukuk formüllerini tanımak, asıl şahıs/köy bilgilerinin nerede başladığını anında görmenizi sağlar:
+
+| Kalıp İbare | Osmanlıca İmlâsı | Anlamı ve Soy Araştırmasındaki İşlevi |
+| :--- | :--- | :--- |
+| **vech-i tahrîr-i hurûf oldur ki** | `وجه تحرير حروف اولدر كى` | *"Yazının kaleme alınış sebebi şudur ki"* — Hüccetin giriş cümlesi; hemen ardından köy, mahalle ve davacı/varis isimleri başlar! |
+| **meclis-i şer‘-i şerîf** | `مجلس شرع شريف` | Kadı mahkemesi huzuru. |
+| **irs-i şer‘ / verâset** | `ارث شرع` | Şer'î miras paylaşımı; hemen devamında vefat edenin eşi (*zevce-i metrûkesi*), oğulları (*sulbî kebîr/sagîr oğlu*) ve kızları (*sulbiye kebîre/sagîre kızı*) tek tek sayılır. |
+| **bey‘-i bât-ı sahîh-i şer‘î** | `بيع بات صحيح شرعى` | Kesin ve geçerli taşınmaz/tarla/mülk satışı (komşu parsel sahiplerinin adlarını da verir!). |
+| **ġurûş / akçe** | `غروش / اقچه` | Tereke ve temettuatta mal/miras değer birimi. |
+| **mâ vaka‘a bi’t-taleb ketb olundu** | `ما وقع بالطلب كتب اولندى` | *"Olan biten talep üzerine yazıldı"* — Belgenin bitiş ve tarih (*tahrîren fî...*) satırı. |
+| **şuhûdü’l-hâl** *(Altın İpucu!)* | `شهود الحال` | **Belgenin en altındaki şahitler listesi!** Kendi atanızın terekesini bulamasanız bile aynı köyden başka birinin hüccet/terekesinin altındaki *şuhûdü’l-hâl* sütununda köyün imamı, muhtarı, komşuları ve akrabaları baba adları ve lakaplarıyla listelenir. |
 
 ---
 
