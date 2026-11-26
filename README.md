@@ -6,7 +6,7 @@ colorTo: blue
 sdk: static
 pinned: true
 license: mit
-short_description: 1500'lere kadar 1:1 kanıtlı Osmanlı soy kütüğü ve arşiv aracı
+short_description: 1500'lere kadar 1:1 kanıtlı Osmanlı soy kütüğü AI aracı
 ---
 
 # Devlet Arşivleri Soy Kütüğü ve Köy Tarihi Araştırma Becerisi (`devlet-arsivleri-soykutugu`)
